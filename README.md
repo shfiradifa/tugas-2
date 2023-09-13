@@ -4,14 +4,14 @@
 
 ### Pembuatan Proyek Django Baru:
 
-- **Step 1:** Aktifkan Virtual environment pada direktori baru.
-- **Step 2:** Instal semua dependencies dalam virtual environment dengan menjalankan perintah `pip install -r requirements.txt` dan tambahkan query yang diperlukan ke dalam file `requirements.txt`.
+- **Step 1:** Mengaktifkan Virtual environment pada direktori baru.
+- **Step 2:** Melakukan instalasi seluruh dependencies dalam virtual environment dengan query `pip install -r requirements.txt` menambahkan sejumlah query yang dibutuhkan di dalam file `requirements.txt`.
 - **Step 3:** Buat proyek Django baru dengan nama "tugas2" menggunakan perintah `django-admin startproject tugas2`.
 
 ### Pembuatan Aplikasi "main" pada Proyek:
 
-- **Step 1:** Berikan izin akses untuk web app pada file `settings.py` dengan mengisi bagian `ALLOWED_HOST` dengan `"*"` dan tambahkan "main" ke dalam bagian `INSTALLED_APPS`.
-- **Step 2:** Jalankan perintah `python manage.py startapp main` untuk membuat aplikasi "main" pada direktori utama yang akan digunakan untuk mengelola proyek.
+- **Step 1:** Memberikan izin akses untuk web app pada file `settings.py` dengan mengisi bagian `ALLOWED_HOST` dengan `"*"` dan tambahkan `'main'` ke dalam bagian `INSTALLED_APPS`.
+- **Step 2:** Jalankan aplikasi main dengan query `python manage.py startapp main` untuk membuat aplikasi "main" pada direktori utama yang akan digunakan untuk mengelola proyek.
 
 ### Routing pada Proyek:
 
@@ -19,7 +19,7 @@
 
 ### Pembuatan Model pada Aplikasi "main":
 
-- **Step 1:** Deklarasikan atribut-atribut yang akan menjadi objek model yang dibutuhkan proyek dalam file `models.py` dengan tipe data yang sesuai (misalnya: "name" dengan tipe data CharField, "amount" dengan tipe data IntegerField, dan "description" dengan tipe data TextField).
+- **Step 1:** Deklarasi atribut-atribut yang akan menjadi objek model yang dibutuhkan proyek dalam file `models.py` dengan tipe data yang sesuai. Setidaknya terdapat variable "name" dengan tipe data CharField, amount dengan tipe data IntegerField, dan descriptioin dengan tipe data TextField. Model ini berguna untuk menyimpan data dan logika aplikasi.
 - **Step 2:** Buat berkas migrasi untuk model yang telah diperbarui dengan menjalankan perintah `python manage.py makemigrations`.
 - **Step 3:** Aplikasikan hasil migrasi ke database dengan menjalankan perintah `python manage.py migrate`.
 
@@ -34,9 +34,9 @@
 
 ### Deployment ke Adaptable:
 
-- **Step 1:** Pastikan template HTML telah diimplementasikan dengan baik dan lakukan pengujian Django untuk memeriksa apakah kode program berjalan sesuai yang diinginkan. Jika sudah sesuai, lakukan langkah-langkah seperti "add," "push," dan "commit" proyek ke repositori GitHub.
-- **Step 2:** Untuk menjalankan aplikasi secara online melalui internet, lakukan deployment aplikasi Django pada platform hosting, seperti Adaptable.io. Buat akun yang terhubung dengan akun GitHub.
-- **Step 3:** Buat aplikasi baru yang terhubung dengan repositori GitHub yang berisi proyek "tugas2". Sesuaikan template deployment, jenis basis data, versi Python, dan perintah awal sesuai kebutuhan. Beri nama aplikasi sesuai yang diinginkan, misalnya "firtix."
+- **Step 1:** Sebelum melakukan deployment, pastikan template HTML telah diimplementasi dengan baik dan melakukan testing django untuk memeriksa apakah code program yang dibuat sudah berjalan sesuai yang diinginkan. Apabila telah sesuai, lakukan add, push, dan commit proyek ke repository GitHub. Saat ini aplikasi telah berjalan dalam lokal.
+- **Step 2:** Untuk menjalankan aplikasi yang dapat diakses secara online melalui internet, lakukan deployment aplikaso django pada platform hosting yang dalam hal ini adalah Adaptable.io dengan langkah pertama adalah pembuatan akun yang terhubung dengan akun GitHub
+- **Step 3:** Buat aplikasi baru yang dihubungkan dengan repository GitHub yang berisi proyek tugas2. Kemudian sesuaikan template deployment, tipe basis data, python version, dan start command sesuai dengan yang digunakan. Setelah itu beri nama aplikasi sesuai yang diinginkan, dalam hal ini adalah "firtix".
 - **Step 4:** Tunggu proses deployment hingga selesai dan peroleh situs web yang dapat diakses secara online.
 
 ### Bagan Request Client ke Web Aplikasi Berbasis Django:
