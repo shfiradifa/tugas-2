@@ -1,8 +1,36 @@
-<h1>Fir-tix Page</h1>
+<!-- <h1>Fir-tix Page</h1>
 
 <h5>Aplication Name: </h5>
 <p>{{ appName }}<p>
 <h5>Name: </h5>
 <p>{{ name }}<p></p>
 <h5>Class: </h5>
-<p>{{ class }}<p></p>
+<p>{{ class }}<p></p> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ appName }}</title>
+    <style>
+        body {
+            background-color: rgb(141, 188, 255);
+            color: black;
+            text-align: center; /* Pusatkan teks secara horizontal */
+        }
+        .footer {
+            font-size: smaller; /* Ukuran teks lebih kecil */
+            margin-top: 20px; /* Jarak dari atas */
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ appName }}</h1>
+    <p>Aplikasi pemesanan tiket untuk pertunjukan teater musikal yang mengadaptasi serial film Upin & Ipin,<br>
+    menghadirkan pengalaman tontonan yang penuh tawa dan candu bagi penggemar.</p>
+    <div class="footer">
+        {{ name }} from {{ class }}
+    </div>
+</body>
+</html>
