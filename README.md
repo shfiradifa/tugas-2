@@ -133,3 +133,12 @@ Sebagai tahap terakhir, setelah di-deploy seperti pada tugas minggu sebelumnya, 
 git add .
 git commit -m "<pesan_commit>"
 git push -u origin main
+```
+
+## Dokumentasi Postman
+
+![Main Page](/Documents/postman_html.png)
+![XML Preview](/Documents/postman_xml.png)
+![XML by ID Preview](Documents/postman_xml_id.png)
+![JSON Preview](/Documents/postman_json.png)
+![JSON by ID Preview](Documents/postman_json_id.png)
