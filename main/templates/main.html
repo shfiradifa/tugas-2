@@ -1,27 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ appName }}</title>
+{% extends 'base.html' %}
+
+{% block content %}
     <style>
         body {
-            background-color: rgb(141, 188, 255);
-            color: black;
-            text-align: center; /* Pusatkan teks secara horizontal */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        .footer {
-            font-size: smaller; /* Ukuran teks lebih kecil */
-            margin-top: 20px; /* Jarak dari atas */
+
+        /* Style tambahan jika diperlukan */
+        .center-content {
+            text-align: center;
+            background-color: #f5f1df;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .item-count {
+            color: rgb(146, 182, 45);
+        }
+
+        /* CSS untuk card pertama */
+        .card {
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 1000px;
+        }
+
+        /* CSS untuk mengatur tabel */
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th:nth-child(1) { width: 150px; }
+        th:nth-child(2) { width: 100px; }
+        th:nth-child(3) { width: 400px; }
+        th:nth-child(4) { width: 50px; }
+        th:nth-child(5) { width: 100px; }
+
+        .form-input {
+            text-align: left;
+        }
+
+        .button {
+            background-color: rgb(45, 75, 182);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            margin: 0px 0px 15px 0px;
         }
     </style>
-</head>
-<body>
-    <h1>{{ appName }}</h1>
-    <p>Aplikasi pemesanan tiket untuk pertunjukan teater musikal yang mengadaptasi serial film Upin & Ipin,<br>
-    menghadirkan pengalaman tontonan yang penuh tawa dan candu bagi penggemar.</p>
-    <div class="footer">
-        {{ name }} from {{ class }}
+
+    <div class="center-content">
+        <div class="card">
+            <h1>Warung Uncle Muthu</h1>
+            <p>Created by <b>{{ name }}</b> from <b>{{ class }}</b></p>
+        </div>
+
+        <div class="card">
+            <!-- Fitur untuk menampilkan pesan jumlah item -->
+            <p class="item-count">Kamu menyimpan {{ products|length }} item pada aplikasi ini.</p>
+
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Stock</th>
+                    <th>Date Added</th>
+                </tr>
+            
+                {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+            
+                {% for product in products %}
+                    <tr>
+                        <td class="form-input">{{product.name}}</td>
+                        <td class="form-input">Rp{{product.price}}</td>
+                        <td class="form-input">{{product.description}}</td>
+                        <td>{{product.amount}}</td>
+                        <td class="form-input">{{product.date_added}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
+            <br />
+            
+            <a href="{% url 'main:create_product' %}">
+                <button class="button">
+                    Add New Product
+                </button>
+            </a>
+        </div>
     </div>
-</body>
-</html>
+{% endblock content %}

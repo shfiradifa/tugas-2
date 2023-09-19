@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        html, body {
+            background-color: #f5f1df;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .center-content {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .card {
+            padding: 5px 20px 5px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        form {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 500px;
+        }
+
+        .form-input {
+            text-align: left;
+        }
+
+        /* CSS untuk tombol "Add Product" */
+        .button {
+            background-color: rgb(45, 75, 182);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 15px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+    </style>
+
+    <div class="center-content">
+        <div class="card">
+            <h1>Add New Product</h1>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <table class="form-input">
+                {{ form.as_table }}
+                <tr>
+                    <td ></td>
+                    <td>
+                        <input type="submit" value="Add Product" class="button">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+{% endblock %}
