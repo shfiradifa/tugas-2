@@ -110,23 +110,23 @@ Untuk menyesuaikan konvensi yang ada, dilakukan pengubahan routing dari `main/` 
 
 Skeleton ini berfungsi sebagai kerangka views yang akan menjadikan kerangka dari situs web yang akan dibuat nantinya menjadi konsisten dan minim kemungkinan terjadinya redudansi. Implementasi ini dilakukan sebelum kita membuat form registrasi. Caranya adalah dengan membuat `base.html` dalam folder **templates** yang diletakan pada root folder. Kemudian meng-update isi dari `'DIRS'` pada file `settings.py` menjadi `[BASE_DIR / 'templates']`. Terakhir, update file `main.html` dengan meng-extend `base.html` yang telah dibuat. Pada bagian ini, saya menambahkan sejumlah code untuk meng-implementasikan style tampilan dari `main.html`, seperti warna background, format card, bentuk dan warna button, padding, tata letak, dan sebagainya.
 
-#### 3. Implementasi BONUS
+#### Implementasi BONUS
 Untuk mengimplementasikan fitur yang menampilkan informasi jumlah item yang telah ditambahkan, saya menambahkan code `<p class="item-count">Kamu menyimpan {{ products|length }} item pada aplikasi ini.</p>` pada `main.html`. Saya mengambil length dari product yang sebelumnya menyimpan seluruh object Product sebagai jumlah dari item yang telah tersimpan. Kemudian code `class="item-count"` yang saya tambahkan bertujuan untuk mengimplementasikan style CSS yang telah saya buat dalam `item-count` pada file yg sama.
 
-### 4. Membuat Form Input Data dan Menampilkan Data Produk Pada HTML
+### 3. Membuat Form Input Data dan Menampilkan Data Produk Pada HTML
 
 Untuk membuat halaman form input data, pertama-tama dilakukan dengan membuat file `forms.py` pada direktori **main** yang akan berisikan struktur dari form. Buat class yang akan menyimpan setiap `Product` yang diinputkan sebagai object dari `Product` itu sendiri dengan fields yang terdiri dari `"name"`, `"price"`, `"description"`, dan `"amount"`. 
 Kemudian, pada file `views.py` ditambahkan sejumlah import dan membuat fungsi `create_product` dengan parameter `request` dan fungsi `show_main`. Fungsi `create_product` digunakan untuk menyimpan input data form setelah divalidasi. Kemudian dikembalikan ke halaman `main`. Fungsi `show_main` akan menyimpan variable `name`, `class`, dan seluruh object `Product` dalam database kemudian di-render ke `main.html`. Setelah kedua file dibuat, di-import ke dalam file `urls.py` yang berada pada folder **main** dan ditambahkan path `path('create-product', create_product, name='create_product'),` dalam list `urlpatterns`.
 Selanjutnya, untuk implementasikan pembuatan tampilan halaman create-product dalam file `create_product.html` yang diletakkan pada folder **templates** dalam folder **main**. Dalam file tersebut, fields form yang sebelumnya telah dibuat, ditampilakan dalam bentuk table dengan perintah `{{ form.as_table }}`. Kemudian saya membuat beberapa code untuk mengatur style tampilan halaman seperti serupa dengan style pada `main.html`. Terakhir, buat tampilan informasi products yang telah ditambahkan dalam bentuk sebuah tabel di `main.html` dan lakukan redirrect dari button `Add New Product` ke halaman form yang baru saja dibuat yaitu `create_product`.
 
-### 5. Pengembalian Data dalam Bentuk XML dan JSON
+### 4. Pengembalian Data dalam Bentuk XML dan JSON
 #### XML
 Untuk menampilkan data dalam format XML, buat sebuah fungsi dalam file `views.py` pada folder **main**, yang dalam penugasan ini diberi nama `show_xml`. fungsi ini akan menerima parameter `request` dan menyimpan seluruh data object Product dalam sebuah variable yang kemudian ditranslate menjadi format XML emnggunakan `serializers` untuk di-return dalam bentuk `HttpResponse`. Agar fungsi dapat berjalan, perlu ditambahkan import `serializers` dan `HttpResponse` dari modul django. Kemudian, untuk menampilkan data berdasarkan id, buat sebuah fungsi bernama `show_xml_by_id` yang berfungsi sama dengan fungsi sebelumnya namun dengan tambahan parameter `id`. Setelah itu, import kedua fungsi tersebut dalam file `urls.py` pada folder **main** dan tambahkan path `path('xml/', show_xml, name='show_xml'),` dan `path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id')` ke dalam list `urlpatterns`. Sampai step ini, kita sudah dapat melihat data dalam bentuk XML melalui http://localhost:8000/xml ataupun http://localhost:8000/xml/[id] untuk menampilkan hasilnya.
 
 #### JSON
 Untuk menampilkan data dalam format XML, hanya perlu melakukan langkah yang sama dengan XML dan disesuaikan dengan JSON seperti prnamaan fungsinya menjadi `show_json` dan `show_json_by_id`. Kemudian menambahkan import kedua fungsi tersebut pada file `urls.py` dalam folder **main** dan tambahkan pula path `path('json/', show_json, name='show_json'),` dan `path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),` ke dalam list `urlpatterns`. Setelah seluruh tahapan ini selesai, maka kita sudah dapat melihat hasilnya melalui http://localhost:8000/json ataupun http://localhost:8000/json/[id] untuk menampilkan data dari satu object saja berdasarkan id.
 
-### 6. Add, Push, dan Commit ke GitHub
+### 5. Add, Push, dan Commit ke GitHub
 
 Sebagai tahap terakhir, setelah di-deploy seperti pada tugas minggu sebelumnya, push ke dalam repository GitHub menggunakan perintah berikut pada terminal:
 ```bash
