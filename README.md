@@ -137,8 +137,8 @@ git push -u origin main
 
 ## Dokumentasi Postman
 
-![Main Page](/Users/shafiraramadhinaadifa/Documents/postman_html.png)
-![XML Preview](/Users/shafiraramadhinaadifa/Documents/postman_xml.png)
-![XML by ID Preview](/Users/shafiraramadhinaadifa/Documents/postman_xml_id.png)
-![JSON Preview](/Users/shafiraramadhinaadifa/Documents/postman_json.png)
-![JSON by ID Preview](/Users/shafiraramadhinaadifa/Documents/postman_json_id.png)
+![Main Page](postman_html.png)
+![XML Preview](postman_xml.png)
+![XML by ID Preview](postman_xml_id.png)
+![JSON Preview](postman_json.png)
+![JSON by ID Preview](postman_json_id.png)
