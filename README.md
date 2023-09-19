@@ -136,9 +136,12 @@ git push -u origin main
 ```
 
 ## Dokumentasi Postman
-
+### HTML
 ![Main Page](postman_html.png)
+### XML
 ![XML Preview](postman_xml.png)
 ![XML by ID Preview](postman_xml_id.png)
+
+### JSON
 ![JSON Preview](postman_json.png)
 ![JSON by ID Preview](postman_json_id.png)
