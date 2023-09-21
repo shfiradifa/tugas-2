@@ -1,4 +1,4 @@
-## Situs Web: [https://firtix.adaptable.app](https://firtix.adaptable.app)
+## Situs Web: [https://shafira-ramadhina-tugas.pbp.cs.ui.ac.id](https://shafira-ramadhina-tugas.pbp.cs.ui.ac.id)
 
 # TUGAS 1
 
