@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="login-card" style="padding-block: 20px;">
+                <div class="card-header">
+                    <h2 class="text-center" style="display: flex; justify-content: center;">Welcome back</h2>
+                </div>
+                    <p class="text-center" style="display: flex; justify-content: center;">Glad to see you 👋</p>
+                    <p class="text-center" style="display: flex; justify-content: center;">Login to your account below</p>
+                <div class="card-body" style="display: flex; flex-direction: column; justify-content: center; width: 100%; padding: 20px;">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <br>
+                            <input type="text" name="username" id="username" placeholder="Username" class="form-control" style="width: 88%;">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <br>
+                            <input type="password" name="password" id="password" placeholder="Password" class="form-control" style="width: 88%;">
+                        </div>
+                        
+                            <button class="btn btn-primary btn-block" style="width: 90%; padding: 8px; border-radius: 24px; background-color: rgb(45, 75, 182); color: white; display: flex; align-items: center; justify-content: center; border-style: none;" type="submit">Login</button>
+                        
+                    </form>
+                    
+                    {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="card-footer text-center" style="display: flex; justify-content: center; padding: 20px;">
+                    Don't have an account yet? <a href="{% url 'main:register' %}" style="padding-inline: 8px;"> Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

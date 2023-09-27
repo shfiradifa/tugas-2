@@ -1,6 +1,6 @@
 ## Situs Web: [https://shafira-ramadhina-tugas.pbp.cs.ui.ac.id](https://shafira-ramadhina-tugas.pbp.cs.ui.ac.id)
 
-# TUGAS 1
+# TUGAS 2
 
 ## Cara Implementasi Checklist:
 
@@ -78,7 +78,7 @@ MVVM merupakan pola arsitektur yang menekankan pada pemisahan logika presentasi 
 
 Perbedaan utama antar ketiganya terletak pada cara ketiganya mengatur dan memisahkan komponen dalam pengembangan perangkat lunak. MVC memisahkan aplikasi menjadi Model (data dan logika bisnis), View (tampilan), dan Controller (pengendali interaksi pengguna). MVT yang khususnya dalam kerangka kerja Django, memasukkan Template yang memisahkan tampilan dari logika pengendali, tetapi tidak memiliki pengendali interaksi yang eksplisit seperti MVC. MVVM menggunakan ViewModel sebagai perantara antara Model (data) dan View (tampilan), dengan ViewModel mengelola tampilan dan interaksi pengguna, memungkinkan pemisahan yang lebih kuat antara tampilan dan logika bisnis.
 
-# TUGAS 2
+# TUGAS 3
 
 ## Perbedaan Form POST dan Form GET dalam Django
 
@@ -147,3 +147,52 @@ git push -u origin main
 ### JSON
 ![JSON Preview](/documentations/postman_json.png)
 ![JSON by ID Preview](/documentations/postman_json_id.png)
+
+# TUGAS 4
+
+## Cara Implementasi Checklist:
+
+### 1. Implementasi Fungsi Registrasi, Login, dan Logout
+
+- **Step 1:** Pastikan sudah menjalankan virtual environment
+- **Step 2:** Karena saya akan menggunakan fungsi `redirect` saat setelah berhasil melakukan register, maka saya mengimport fungsi `register` terlebih dahulu dari module `django.shortcuts`. Kemudian, agar memudahkan pembuatan form register, saya menggunakan template formulir bawaan dengan meng-import `UserCreationForm` dari module `django.contrib.auth.forms`. Selain itu, saya juga meng-import fungsi `messages` dari module `django.contrib` untuk menampilkan pesan informasi ketika berhasil register atau login. Semua import ini dilakukan di file `views.py` yang berada pada direktori **main**.
+- **Step 3:** Pada file yang sama, saya membuat fungsi `register`, `login_user`, dan `logout_user` yang menerima parameter `request`. Pada fungsi **register**, pertama saya membuat `UserCreationForm` baru dari yang sudah di-import sebelumnya dengan memasukkan QueryDict berdasarkan input dari user pada `request.POST`. Kemudian, diperiksa validasi inputnya. Apabila valid, data yang diterima dari form tersebut disimpan dan dibuat menjadi satu akun. Setelah itu, akan muncul message ketika register berhasil dan di-redirect ke login page. Pada fungsi **login_user**, Pertama-tama username dan password yang diinput user diautentikasi. Apabila berhasil diautentikasi akan di-login sesuai akun user dan di-redirect ke main page. Apabila tidak akan keluar pesan informasi bahwa username atau password yang dimasukkan salah. Pada fungsi **logout_user**, apabila fungsi dipanggil akan langsung di-logout dari akun dan di-redirect ke login page.
+- **Step 4:** Tahap selanjutnya adalah membuat file html untuk `register.html` dan `login.html` untuk menjalankan fungsinya untuk ditampilkan di web app. Kedua file diletakan pada direktori `main/templates` bersama dengan file `main.html` dan `create_product.html` yang sudah ada sebelumnya. 
+- **Step 5:** Ketiga fungsi yang telah dibuat pada `views.py` di-import ke `urls.py` yang ada pada direktori `main` agar dapat dilakukan pemanggilan fungsi tersebut. Kemudian, saya menambahkan path untuk ketiga fungsi tadi ke dalam list `urlpatterns` pada file yang sama.
+
+### 2. Restriksi Akses Halaman Main
+
+Untuk mengatur agar pengguna diharuskan login dahulu sebelum memperoleh akses ke halaman main, dilakukan import `login_required` dari module `django.contrib.auth.decorators`. Kemudian tambahkan code `@login_required(login_url='/login')` tepat di atas fungsi `show_main` yang ada pada file `views.py` di direktori `main` yang mengartikan halaman main hanya dapat diakses oleh pengguna yang sudah login (terautentikasi).
+
+### Penggunaan Cookies
+Untuk dapat melihat penggunaan cookies ketika mengakses halaman main, saya menambahkan data last login. Maka dari itu, perlu menambahkan module `datetime` pada file `views.py` di direktori `main`. Kemudian, perlu meng-update sebagian isi dari fungsi `login_user` dengan menambahkan code `response.set_cookie('last_login', str(datetime.datetime.now()))` di dalam conditional ketika data input login berhasil diautentikasi. Kemudian, perlu penambahan `'last_login': request.COOKIES['last_login'],` ke dalam variable `context` pada fungsi `main` yang ada di `views.py` di direktori `main`. Setelah itu juga menambahkan `response.delete_cookie('last_login')` dalam fungsi `logout_user` sebelum response tersebut di-return. Terakhir, baru dilakukan pemanggilan pada `main.html` berupa data last login. Cookie yang telah dibuat hanya akan bertahan sampai user melakukan logout.
+
+### Menghubungkan Model `Product` dengan `User`
+
+Kita perlu menghubungkan setiap objek Product yang akan dibuat dengan pengguna yang membuatnya, agar pengguna yang sedang terotorisasi hanya akan melihat produk-produk yang telah dibuat sendiri. Untuk itu, tambahkan import `user` dari module `django.contrib.auth.models` pada file `models.py` di direktori `main`. Kemudian buat model `user = models.ForeignKey(User, on_delete=models.CASCADE)` pada model `Product` yang telah ada sebelumnya. Dengan begitu, satu produk dengan satu user akan terhubung melalui sebuah relationship dan setiap produk akan terasosiasikan dengan seorang user. Kemudian, sejumlah potongan code ditambahkan ke dalam fungsi `create_product` yang berguna untuk mencegah Django agar tidak langsung menyimpan objek yang telah dibuat dari form langsung ke database sehingga memungkinkan kita untuk memodifikasi objek tersebut terlebih dahulu sebelum disimpan ke database. Dalam kasus ini, kita akan mengisi field `user` dengan objek `User` dari return value `request.user` yang sedang terotorisasi untuk menandakan bahwa objek tersebut dimiliki oleh pengguna yang sedang login. Setelah itu, untuk menampilkan objek Product yang terasosiasikan dengan pengguna yang sedang login, perlu ditambahkan potongan code ke dalam fungsi `show_main` yang hanya akan mengambil `Product` yang dimana field `user` terisi dengan objek `User` yang sama dengan pengguna yang sedang login. Lalu, mengganti variable `name` menjadi `request.user.username`. Setelah selesai semua, tahap terakhir adalah melakukan migrasi model untuk menyimpan perubahan.
+
+## Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+ 
+`UserCreationForm` merupakan template formulir yang sudah disediakan oleh Django dan integrasi dengan Django. Template formulir ini berguna untuk memudahkan kita membuat formulir pembuatan akun pengguna tanpa harus membuat code manual. Formulir ini memiliki 3 field, yaitu username, password, dan konfirmasi password. 
+**Kelebihan:** 
+- Memberikan kemudahan pengaplikasian karena kita tidak perlu merancang coding-an dari awal.
+- Adanya validasi bawaan sehingga input dapat diverifikasi secara otomatis dengan aturan yang telah ditetapkan.
+- Walaupun sudah ada field dan aturan validasinya sendiri, kita juga dapat secara fleksibilitas melakukan kustomisasi seperti menambahkan field atau mengubah validasi yang ada.
+**Kekurangan:**
+- Meski fleksibilitas dalam kustomisasi termasuk ke dalam kelebihan, tetapi hal tersebut juga dapat menjadi kekurangan karena dalam penambahan atau pengubahan codenya juga bisa menjadi rumit
+- Jika ingin membuat aplikasi dengan tingkat otentikasi yang lebih tinggi (seperti memerlukan input email, nomor telephone, dsb), mungkin form ini kurang cocok untuk digunakan.
+- Tidak mendukung autentikasi sosial , seperti register menggunakan Google account misalnya. Untuk mengimplementasikan hal tersebut perlu dilakukan secara terpisah.
+
+## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+Authentication dan authorization adalah 2 hal berbeda yang berkaitan dengan keamanan pengguna. 
+**Authentication** merupakan proses pemverifikasian identitas pengguna dengan memastikan entitas yang saat ini sedang mencoba mengakses sistem adalah diri mereka sendiri (yang telah di claim sebelumnya). Kemudian, outputnya adalah berupa entitas yang sudah diautentikasi, namun belum dipastikan mendapat izin atau tidaknya atas hak akses. Contoh dari penggunaan authentication adalah ketika kita melakukan login akun SIAK dengan menggunakan kata sandi.
+Di sisi lain, **authorization** merupakan proses pemberian atau penolakan izin atas akses terhadap suatu data terhadap entitas yang telah diautentikasi. Output dari proses ini adalah berupa hak akses itu sendiri, seperti akses apa yang diperbolehkan atau tidaknya. Contoh penggunaan authorization adalah ketika kita membuka file gdocs yang hanya diberikan permission untuk diakses menggunakan email ui yang telah melewati autentikasi username dan password SIAK sebelumnya. 
+Singkatnya, authentication yang akan bekerja memeriksa kredensial, sedangkan authorization bekerja memeriksa izin. Keduanya akan saling terlibat satu sama lain dalam mengamankan web app kita sehingga keduanya sangat penting.
+
+## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+Cookies adalah data atau informasi yang disimpan di komputer pengguna saat pengguna mengakses situs web. Tujuan penggunaannya bisa beragam, mulao dari menyimpan preferensi pengguna, mengelola sesi pengguna, hingga melacak aktivitas pengguna. Sesi pengguna dalam hal ini mengartikan bahwa cookies yang hanya berlaku selama sesi pengguna aktif dan akan terhapus ketika pengguna keluar dari situs, logout, atau menutup browser. Dengan adanya cookies, memungkinkan server web untuk mengingat pengguna dan informasi terkait pengguna ketika pengguna mengakses situs web kembali.
+## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+Penggunaan cookies dalam pengembangan web dapat aman secara default apabila digunakan dengan benar. Namun, jika penggunaannya tidak benar dapat menjadi risiko yang perlu dihindari. Seperti informasi sensitif yang meliputi kata sandi atau data pribadi lainnya yang tidak dienkripsi secara memadai akan berpotensi terhadap risiko keamanan data pengguna itu sendiri. Kemudian, apabila data telah tercuri, maka pengguna tidak dapat mengambil alih kembali akun pengguna. Selain dicuri, cookies ini juga dapat menjadi target serangan XSS (penyisipan script berbahaya). Untuk menghindarinya, sebaiknya pastikan dienkripsi dengan aman menggunakan HTTPS sehingga ketika melakukan pengiriman ookies dari klien ke server atau sebaliknya, data telah dienkripsi dengan baik dan aman secara default.
