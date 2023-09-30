@@ -8,10 +8,10 @@
 
         <form method="POST">
             {% csrf_token %}
-            <table class="form-input">
+            <table class="form-input" style="background-color: white; text-align: left; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); opacity: 0.9;">
                 {{ form.as_table }}
                 <tr>
-                    <td ></td>
+                    <td></td>
                     <td>
                         <input type="submit" value="Add Product" class="button">
                     </td>

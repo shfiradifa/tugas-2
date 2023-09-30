@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<body>
     <div class="center-content">
         <div class="card">
             <h1>Warung Uncle Muthu</h1>
@@ -25,34 +26,46 @@
             
                 {% for product in products %}
                     <tr>
-                        <td class="form-input">{{product.name}}</td>
-                        <td class="form-input">Rp{{product.price}}</td>
-                        <td class="form-input">{{product.description}}</td>
-                        <td class="form-input" style="display: flex; flex-direction: row; justify-content: center; align-items: center;" >
+                        <td class="text-left">{{product.name}}</td>
+                        <td class="text-right">Rp{{product.price}}</td>
+                        <td class="text-left">{{product.description}}</td>
+                        <td class="text-center" >
+                            <div style="display: flex; flex-direction: row; justify-content: center;">
+                                <!-- substract button -->
+                                <form method="post" action="{% url 'main:subtract_amount' product.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="subtract-button" style="border-width: 0; margin-right: 10px;">-</button>
+                                </form>
 
-                            <!-- substract button -->
-                            <form method="post" action="{% url 'main:subtract_amount' product.id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="subtract-button" style="border-width: 0; margin-right: 10px;">-</button>
-                            </form>
+                                <span id="amount_{{ product.id }}" >
+                                    {{ product.amount }}
+                                </span>
 
-                            <span id="amount_{{ product.id }}" >
-                                {{ product.amount }}
-                            </span>
-
-                            <!-- add button -->
-                            <form method="post" action="{% url 'main:add_amount' product.id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="add-button" style="border-width: 0; margin-left: 10px;">+</button>
-                            </form>
-
+                                <!-- add button -->
+                                <form method="post" action="{% url 'main:add_amount' product.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="add-button" style="border-width: 0; margin-left: 10px;">+</button>
+                                </form>
+                            </div>
                         </td>
-                        <td class="form-input" >{{product.date_added}}</td>
-                        <td class="form-input">
-                            <form method="post" action="{% url 'main:delete_product' product.id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="delete-button">🗑 Delete</button>
-                            </form>
+                        <td class="text-center" >{{product.date_added}}</td>
+                        <td class="text-center" >
+                            <div style="display: flex; flex-direction: row; justify-content: center;">
+                                <a href="{% url 'main:edit_product' product.pk %}">
+                                    <button>
+                                        ✏️ Edit
+                                    </button>
+                                </a>
+                                <a href="{% url 'main:delete_product' product.pk %}">
+                                    <button>
+                                        🗑 Delete
+                                    </button>
+                                </a>
+                                <!-- <form method="post" action="{% url 'main:delete_product' product.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="delete-button">🗑 Delete</button>
+                                </form> -->
+                            </div>
                         </td>
                     </tr>
                 {% endfor %}
@@ -77,4 +90,5 @@
             <h5>Sesi terakhir login: {{ last_login }}</h5>
         </div>
     </div>
+</body>
 {% endblock content %}

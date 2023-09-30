@@ -1,6 +1,11 @@
 body {
+    background-image: url('asset/bg.jpg');
+    background-size: cover; /* Menyesuaikan gambar dengan ukuran layar */
+    background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+    background-attachment: fixed; /* Tetapkan latar belakang dalam posisi tetap */
+
     font-family: "Mona Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-color: #f5f1df;
+    /* background-color: #e9dff5; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,6 +35,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 1250px;
+    opacity: 0.9;
 }
 
 .register-card {
@@ -39,6 +45,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 400px;
     height: 500px;
+    opacity: 0.9;
 }
 
 .login-card {
@@ -48,16 +55,19 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 400px;
     height: 450px;
+    opacity: 0.9;
 }
 
 .login-card h2 {
     font-size: 24px;
     margin-bottom: 20px;
+    opacity: 0.9;
 }
 
 .login-card.form-group {
     text-align: left;
     margin-bottom: 15px;
+    opacity: 0.9;
 }
 
 .alert.alert-danger {
@@ -94,14 +104,23 @@ td:nth-child(6) { text-align: center;} */
     text-align: center;
 }
 
-.form-input {
+.text-left {
     text-align: left;
+}
+
+.text-right {
+    text-align: right;
 }
 
 .form-register {
     display: flex;
     flex-direction: column;
     text-align: left;
+}
+
+.form-login {
+    text-align: left;
+    margin: 10px;
 }
 
 .button {
