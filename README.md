@@ -51,9 +51,9 @@
     urls.py <-------+--------->  views.py
                 |                   |
                 v                   v
-            models.py          items.html
+            models.py           main.html
 - **Penjelasan:**
-Client membuat request ke DJango dengan mengakses URL melalui sebuah web browser. Kemudian, request tersebut diteruskan ke **urls.py** untuk di-mapping ke fungsi view yang sesuai. Selanjutnya, fungsi view akan memproses request dan mengakses data yang diperlukan dari **models.py**. Setelah data diperoleh, fungsi view akan mengirimkan respon ke client dalam bentuk HttpResponse. HttpResponse ini akan di-render menggunakan berkas HTML yang sesuai. Dalam proses ini, **urls.py** bertanggung jawab untuk menghubungkan URL yang diakses oleh client dengan fungsi view yang akan memproses request tersebut, **views.py** bertanggung jawab untuk memproses request dan merender **items.html** dengan data dari **models.py** dan mengirimkan respon ke client dalam bentuk HttpResponse, serta **models.py** bertanggung jawab untuk mengakses data yang diperlukan oleh fungsi view sehingga dapat ditampilkan pada web browser milik client.
+Client membuat request ke DJango dengan mengakses URL melalui sebuah web browser. Kemudian, request tersebut diteruskan ke **urls.py** untuk di-mapping ke fungsi view yang sesuai. Selanjutnya, fungsi view akan memproses request dan mengakses data yang diperlukan dari **models.py**. Setelah data diperoleh, fungsi view akan mengirimkan respon ke client dalam bentuk HttpResponse. HttpResponse ini akan di-render menggunakan berkas HTML yang sesuai. Dalam proses ini, **urls.py** bertanggung jawab untuk menghubungkan URL yang diakses oleh client dengan fungsi view yang akan memproses request tersebut, **views.py** bertanggung jawab untuk memproses request dan merender **main.html** dengan data dari **models.py** dan mengirimkan respon ke client dalam bentuk HttpResponse, serta **models.py** bertanggung jawab untuk mengakses data yang diperlukan oleh fungsi view sehingga dapat ditampilkan pada web browser milik client.
 
 ## Mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 Virtual environment sangat berguna ketika kita membutuhkan dependencies yang berbeda-beda antara project satu dengan lainnya yang berjalan pada satu sistem operasi yang sama. Dalam pengembangan aplikasi web berbasis Django, virtual environment sangat diperlukan karena setiap proyek Django memiliki kebutuhan dependencies yang berbeda-beda. Dengan menggunakan virtual environment, kita dapat mengisolasi dependencies yang dibutuhkan oleh setiap proyek Django sehingga tidak akan terjadi konflik antar dependencies.
@@ -196,3 +196,67 @@ Cookies adalah data atau informasi yang disimpan di komputer pengguna saat pengg
 ## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
 
 Penggunaan cookies dalam pengembangan web dapat aman secara default apabila digunakan dengan benar. Namun, jika penggunaannya tidak benar dapat menjadi risiko yang perlu dihindari. Seperti informasi sensitif yang meliputi kata sandi atau data pribadi lainnya yang tidak dienkripsi secara memadai akan berpotensi terhadap risiko keamanan data pengguna itu sendiri. Kemudian, apabila data telah tercuri, maka pengguna tidak dapat mengambil alih kembali akun pengguna. Selain dicuri, cookies ini juga dapat menjadi target serangan XSS (penyisipan script berbahaya). Untuk menghindarinya, sebaiknya pastikan dienkripsi dengan aman menggunakan HTTPS sehingga ketika melakukan pengiriman ookies dari klien ke server atau sebaliknya, data telah dienkripsi dengan baik dan aman secara default.
+
+# TUGAS 5
+
+## Manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya?
+
+**Element Selector**
+Element selector berguna untuk memberikan styling yang sama pada element-elemen sejenis, seperti misalnya mengganti font atau warna pada setiap teks dengan elemen paragraf `<p>`. Element selector digunakan ketika kita ingin menyeragamkan format untuk suatu jenis elemen.
+
+**ID Selector**
+ID Selector berguna untuk memberikan styling khusus (unik) pada elemen-elemen tertentu saja, seperti misalnya memberikan typhography khusus untuk sebuah teks berelemen paragraf `<p>` yang berbeda dengan teks dengan elemen `<p>` lainnya. ID selector digunakan ketika kita ingin memberi gaya khusus pada satu elemen spesifik.
+
+**Class Selector**
+Class selector berguna untuk memberikan styling yang sama pada sekelompok elemen, baik yang sama atau berbeda, seperti misalnya memberikan layout khusus seperti background-color dan padding untuk sekelompok elemen yang terdiri dari teks `<h1>`, `<p>`, dan `<table>`. Class selector digunakan ketika kita ingin mengelompokkan sejumlah elemen dengan gaya yang sama.
+
+## HTML5 Tag
+
+- **`<!DOCTYPE html>`:**
+    Digunakan sebagai deklarasi versi HTML dalam dokumen untuk memberi tahu browser bahwa kita menggunakan HTML5. Dengan tag ini, kita memberikan panduan kepada komputer untuk memahami bagaimana struktur dokumen tersebut dirancang.
+- **`<html>`:**
+    Digunakan untuk menandai awal dan akhir dari dokumen HTML atau dengan kata lain menetapkan batas halaman.
+- **`<nav>`:**
+    Digunakan untuk mengelompokkan elemen untuk navigasi, seperti navbar.
+- **`<head>`:**
+    Berisi informasi meta atau informasi latar belakang terkait dokumen, misalnya seperti judul, karakter set, dan tautan ke stylesheet.
+- **`<body>`:**
+    Digunakan sebagai penandan area utama dimana konten dokumen HTML ditempatkan, seperti misalnya teks, gambar, tautan, atau elemen-elemen lainnya.
+- **`<div>`:**
+    Digunakan sebagai elemen penanda untuk mengelompokkan elemen-elemen HTML dan mengimplementasikan styling tertentu pada sekelomopk elemen tersebut.
+- **`<title>`:**
+    Digunakan untuk membuat judul dokumen yang nantinya akan muncul di judul browser pada tab.
+- **`<ul>`, `<ol>`, `<li>`:**
+    Digunakan untuk membuat daftar tak terurut (`<ul>`), daftar terurut (`<ol>`), dan item daftar (`<li>`).
+- **`<h1>`/`<h2>`/`<h3>`/dst:**
+    Digunakan untuk membuat teks dengan masing-masing ukurannya. Misalnya, `<h1>` untuk judul besar dan `<h2>` untuk judul yang sedikit lebih kecil, dan seterusnya.
+- **`<p>`:**
+    Digunakan untuk membuat paragraf teks.
+- **`<a>`:**
+    Digunakan untuk membuat tautan (hyperlink) ke halaman lain. Seperti misalnya ketika suatu button di-klik akan masuk ke halama lainnya bergantung pada hyperlink yang dicantumkan.
+- **`<img>`:**
+    Digunakan untuk meng-insert gambar dalam dokumen. Ada pula `<svg>` untuk meng-insert gambar dalam format `.svg`.
+- **`<form>`:**
+    Digunakan untuk membuat tampilan formulir, seperti dalam formulir login atau register.
+- **`<input>`:**
+    Digunakan untuk membuat berbagai jenis input, seperti teks, sandi, atau button. Masing-masingnya difungsikan dengan type tertentu.
+- **`<footer>`:**
+    Digunakan untuk membuat footer yang berisi informasi penutup di bagian akhir dari dokumen, seperti misalnya informasi hak cipta dan tautan ke halaman lain.
+
+
+## Perbedaan antara margin dan padding
+
+Box model pada CSS merupakan suatu box yang membungkus setiap elemen HTML yang terdiri dari content, padding, border, dan margin. Untuk perbedaan tersendiri antara **margin** dan **padding** terletak pada posisi area yang dikosongkan. Pada **padding**, kita akan memberi space untuk area sekitar (luar) content. Sedangkan pada **margin**, kita akan memberi space untuk area sekitar (luar) border.
+
+## Perbedaan antara framework CSS Tailwind dengan Bootstrap dan kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+
+**Tailwind**
+Framework CSS Tailwind membuat tampilan dengan pendekatan "utility-first" yang menggabungkan kelas-kelas utilitas yang telah didefinisikan sebelumnya. Dari segi ukuran file CSS, jika dibandingkan dengan Bootstrap, Tailwind mempunyai file CSS yang lebih kecil dan hanya akan memuat kelas-kelas utilitas yang ada. Tailwind CSS menawarkan fleksibilitas dan adaptabilitas tinggi terhadap proyek. Namun, Tailwind CSS memiliki pembelajaran yang lebih curam karena memerlukan pemahaman terhadap kelas-kelas utilitas yang tersedia dan bagaimana menggabungkannya untuk mencapai tampilan yang diinginkan.
+
+**Bootstrap**
+Framework CSS Bootstrap menggunakan gaya dan komponen yang telah didefinisikan, yang memiliki tampilan yang sudah jadi dan dapat digunakan secara langsung. Dari segi ukuran file CSS, jika dibandingkan dengan Tailwind, Bootstrap memiliki file CSS yang lebih besar karena termasuk banyak komponen yang telah didefinisikan. Tampilan yang dihasilkan dari Bootstrap cenderung lebih konsisten di seluruh proyek karena komponen yang digunakan telah didefinisikan. Untuk pembelajarannya, Bootstrap memiliki pembelajaran yang lebih cepat untuk pemula karena dapat mulai dengan komponen yang telah didefinisikan.
+
+Pemilihan yang tepat antara keduanya bergantung pada kebutuhan spesifik proyek dan preferensi developer. Jika kita mengutamakan kecepatan pengembangan dan responsive design yang cepat, Bootstrap akan menjadi pilihan yang lebih tepat. Namun, jika kita mencari fleksibilitas dan kebebasan yang lebih besar dalam desain serta telah memahami lebih dalam terkait framework CSS, Tailwind mungkin akan menjadi pilihan yang lebih sesuai.
+
+## Cara Implementasi Checklist:
+

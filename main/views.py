@@ -15,20 +15,34 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+from django.db.models import Sum
+
 # Create your views here.
 ...
 @login_required(login_url='/login')
 def show_main(request):
     products = Product.objects.filter(user=request.user)
+    total_stock = products.aggregate(Sum('amount'))['amount__sum'] or 0
 
     context = {
         'name': request.user.username,
         'class': 'PBP A',
         'products': products,
         'last_login': request.COOKIES['last_login'],
+        'total_stock': total_stock,
     }
 
     return render(request, "main.html", context)
+
+def inventory(request):
+    products = Product.objects.filter(user=request.user)
+    context = {
+        'name': request.user.username,
+        'class': 'PBP A',
+        'products': products,
+        'last_login': request.COOKIES['last_login'],
+    }
+    return render(request, "inventory.html", context)
 
 def create_product(request):
     form = ProductForm(request.POST or None)
@@ -37,7 +51,7 @@ def create_product(request):
         product = form.save(commit=False)
         product.user = request.user
         product.save()
-        return HttpResponseRedirect(reverse('main:show_main'))
+        return HttpResponseRedirect(reverse('main:inventory'))
 
     context = {'form': form}
     return render(request, "create_product.html", context)
@@ -95,19 +109,14 @@ def add_amount(request, id):
     data = get_object_or_404(Product, pk=id)
     data.amount += 1
     data.save()
-    return HttpResponseRedirect(reverse('main:show_main'))
+    return HttpResponseRedirect(reverse('main:inventory'))
 
 def subtract_amount(request, id):
     data = get_object_or_404(Product, pk=id)
     if data.amount > 1:
         data.amount -= 1
         data.save()
-    return HttpResponseRedirect(reverse('main:show_main'))
-
-# def delete_product(request, id):
-#     data = get_object_or_404(Product, pk=id)
-#     data.delete()
-#     return HttpResponseRedirect(reverse('main:show_main'))
+    return HttpResponseRedirect(reverse('main:inventory'))
 
 def edit_product(request, id):
     # Get product berdasarkan ID
@@ -119,7 +128,7 @@ def edit_product(request, id):
     if form.is_valid() and request.method == "POST":
         # Simpan form dan kembali ke halaman awal
         form.save()
-        return HttpResponseRedirect(reverse('main:show_main'))
+        return HttpResponseRedirect(reverse('main:inventory'))
 
     context = {'form': form}
     return render(request, "edit_product.html", context)
@@ -130,4 +139,7 @@ def delete_product(request, id):
     # Hapus data
     product.delete()
     # Kembali ke halaman awal
-    return HttpResponseRedirect(reverse('main:show_main'))
+    return HttpResponseRedirect(reverse('main:inventory'))
+
+def home(request):
+    return render(request, "home.html")

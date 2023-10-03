@@ -5,19 +5,66 @@
 {% endblock meta %}
 
 {% block content %} 
+<nav class="navbar fixed-top bg-body-tertiary" style="background-color: #ffffff;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <div class="layout logo" style="color: #000; font-feature-settings: 'cv04' on, 'cv03' on, 'cv02' on, 'cv11' on, 'clig' off, 'liga' off; font-family: R-Flex; font-size: 16px; font-style: normal; font-weight: 700; line-height: 150%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 21.98C1 22.54 1.45 22.99 2.01 22.99H15C15.56 22.99 16.01 22.54 16.01 21.98V21H1V21.98ZM8.5 8.99C4.75 8.99 1 11 1 15H16C16 11 12.25 8.99 8.5 8.99ZM3.62 13C4.73 11.45 7.09 10.99 8.5 10.99C9.91 10.99 12.27 11.45 13.38 13H3.62ZM1 17H16V19H1V17ZM18 5V1H16V5H11L11.23 7H20.79L19.39 21H18V23H19.72C20.56 23 21.25 22.35 21.35 21.53L23 5H18Z" fill="url(#paint0_linear_15_15359)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_15_15359" x1="12" y1="1" x2="12" y2="23" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#5200FF"/>
+                        <stop offset="1" stop-color="#76599B"/>
+                        </linearGradient>
+                    </defs>
+                    </svg>
+                Warung Uncle Muthu
+            </div>
+        </a>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="login-card" style="display: flex; flex-direction: column; height: 100%; padding:20px;">
-                <h1 class="text-center" style="display: flex; justify-content: center;">Create an account</h1>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'main:home' %}" style="border-radius: 12px; background: var(--primary-black-3, rgba(0, 0, 0, 0.10)); backdrop-filter: blur(20px); color: black;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                        <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
+                        </svg>
+                    Home
+                </a>
+            </li>
+        </ul>
 
+        <a href="{% url 'main:register' %}">
+            <button class="register-button" style="display: inline-flex; height: 40px; padding: 12px 32px; justify-content: center; align-items: center; gap: 8px; flex-shrink: 0;">
+                Register
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                </svg>
+            </button>
+        </a>
+    </div>
+</nav>
+
+<body class="body-landing">
+    <div class="card login" style="padding:24px; border-radius: 24px; width: 500px; background: var(--primary-white-1, #FFF);">
+        <div class="layout login" style="border-radius: 12px; background: rgba(55, 57, 81, 0.00);">
+            <div class="card header" style="display: flex; width: 100%; padding: 24px 16px; flex-direction: column; justify-content: center; align-items: center; gap: 10px; align-self: stretch; border-width: 0; box-shadow: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+                    <path d="M2.16663 36.6333C2.16663 37.5667 2.91663 38.3167 3.84996 38.3167H25.5C26.4333 38.3167 27.1833 37.5667 27.1833 36.6333V35H2.16663V36.6333ZM14.6666 14.9834C8.41663 14.9834 2.16663 18.3334 2.16663 25H27.1666C27.1666 18.3334 20.9166 14.9834 14.6666 14.9834ZM6.53329 21.6667C8.38329 19.0834 12.3166 18.3167 14.6666 18.3167C17.0166 18.3167 20.95 19.0834 22.8 21.6667H6.53329ZM2.16663 28.3334H27.1666V31.6667H2.16663V28.3334ZM30.5 8.33335V1.66669H27.1666V8.33335H18.8333L19.2166 11.6667H35.15L32.8166 35H30.5V38.3334H33.3666C34.7666 38.3334 35.9166 37.25 36.0833 35.8834L38.8333 8.33335H30.5Z" fill="url(#paint0_linear_15_15006)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_15_15006" x1="20.5" y1="1.66669" x2="20.5" y2="38.3334" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#5200FF"/>
+                            <stop offset="1" stop-color="#76599B"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h2 class="typo1-login" style="align-self: stretch; text-align: center;">Create an Account</h2>
+            </div>
                 <form method="POST" class="text-center"  style="flex-direction: column;">
                     {% csrf_token %}  
                     <div class="form-register" style="display: flex; flex-direction: column;">
                         {{ form.as_table }}
                     </div>
-                    <button class="btn btn-primary btn-block" style="width: 100%; padding: 10px; border-radius: 24px; background-color: rgb(45, 75, 182); color: white; display: flex; align-items: center; justify-content: center; border-style: none;" type="submit">Create account</button>
+                    <button class="btn btn-primary btn-block" style="padding: 8px 25px; border-radius: 12px; width: 100%; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);" type="submit">Create account</button>
                 </form>
 
                 {% if messages %}

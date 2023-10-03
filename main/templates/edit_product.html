@@ -4,19 +4,77 @@
 
 {% block content %}
 
-<h1>Edit Product</h1>
+<nav class="navbar fixed-top bg-body-tertiary" style="background-color: #36a8ce;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <div class="layout logo" style="color: #000; font-feature-settings: 'cv04' on, 'cv03' on, 'cv02' on, 'cv11' on, 'clig' off, 'liga' off; font-family: R-Flex; font-size: 16px; font-style: normal; font-weight: 700; line-height: 150%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 21.98C1 22.54 1.45 22.99 2.01 22.99H15C15.56 22.99 16.01 22.54 16.01 21.98V21H1V21.98ZM8.5 8.99C4.75 8.99 1 11 1 15H16C16 11 12.25 8.99 8.5 8.99ZM3.62 13C4.73 11.45 7.09 10.99 8.5 10.99C9.91 10.99 12.27 11.45 13.38 13H3.62ZM1 17H16V19H1V17ZM18 5V1H16V5H11L11.23 7H20.79L19.39 21H18V23H19.72C20.56 23 21.25 22.35 21.35 21.53L23 5H18Z" fill="url(#paint0_linear_15_15359)"/>
+                    <defs>
+                      <linearGradient id="paint0_linear_15_15359" x1="12" y1="1" x2="12" y2="23" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#5200FF"/>
+                        <stop offset="1" stop-color="#76599B"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                Warung Uncle Muthu
+            </div>
+        </a>
 
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Edit Product"/>
-            </td>
-        </tr>
-    </table>
-</form>
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'main:show_main' %}">
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.004-.001.274-.11a.75.75 0 0 1 .558 0l.274.11.004.001 6.971 2.789Zm-1.374.527L8 5.962 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339Z"/>
+                    </svg>
+                    Inventory
+                </a>
+            </li>
+        </ul>
+
+        <a href="{% url 'main:logout' %}">
+            <button class="button" style="padding: 8px 25px; border-radius: 12px; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);">
+                Logout
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                </svg>
+            </button>
+        </a>
+    </div>
+</nav>
+
+<div class="center-content" style="padding: 10px">
+        <div class="card add-product" style="width:fit-content; padding: 20px;">
+            <a href="{% url 'main:inventory' %}">
+                <button class="button" style="padding: 0px 0px; border-radius: 12px; background: white; opacity: 0.9; color: #000;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                    </svg>
+                    Back
+                </button>
+            </a>        
+
+            <h1 class="text-center" style="padding: 10px; font-family: R-Flex; color: #000;">Edit Product</h1>
+
+            <form method="POST">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+
+            <input class="btn btn-primary btn-block" type="submit" value="Save Product" style="padding: 8px 25px; border-radius: 12px; width: 100%; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);"/>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

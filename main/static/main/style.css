@@ -1,11 +1,20 @@
 body {
-    background-image: url('asset/bg.jpg');
+    background-image: url('assets/bg.jpg');
     background-size: cover; /* Menyesuaikan gambar dengan ukuran layar */
     background-repeat: no-repeat; /* Mencegah pengulangan gambar */
     background-attachment: fixed; /* Tetapkan latar belakang dalam posisi tetap */
 
-    font-family: "Mona Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    /* background-color: #e9dff5; */
+    font-family: R-Flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.body-dashboard {
+    background-color: #f4f4f4;
+    font-family: R-Flex;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +23,6 @@ body {
 }
 
 .center-content {
-    text-align: center;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -26,7 +34,7 @@ body {
 }
 
 .item-count {
-    color: rgb(146, 182, 45);
+    color: rgb(61, 45, 182);
 }
 
 .card {
@@ -48,20 +56,39 @@ body {
     opacity: 0.9;
 }
 
-.login-card {
-    padding: 10px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    height: 450px;
-    opacity: 0.9;
+.card login {
+    display: flex;
+    padding: 64px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    align-self: stretch;
 }
 
 .login-card h2 {
     font-size: 24px;
     margin-bottom: 20px;
     opacity: 0.9;
+}
+
+.layout login {
+    display: flex;
+    padding: 64px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    align-self: stretch;
+}
+
+.typo1-login {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: R-Flex;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 38.4px */
 }
 
 .login-card.form-group {
@@ -138,4 +165,238 @@ td:nth-child(6) { text-align: center;} */
     text-decoration: none; /* Menghilangkan garis bawah pada tautan */
     border-style: none;
     background-color: white;
+}
+
+#text-header {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'cv04' on, 'cv03' on, 'cv02' on, 'cv11' on, 'clig' off, 'liga' off;
+    font-family: R-Flex;
+    font-size: 46px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 69px */
+}
+
+#text-home {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: R-Flex;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 27px */
+}
+
+.body-landing {
+    background-image: url('assets/background.png');
+    width: 1440px;
+    height: 1200px;
+}
+
+.bg-landing {
+    background-image: url('assets/background.png');
+    width: 1978.663px;
+    height: 938.954px;
+    flex-shrink: 0;
+}
+
+.nav-landing {
+    background: #FFF;
+}
+
+.register-button {
+    border-radius: 12px;
+    border: 2px solid #907EFF;
+}
+
+.action-button {
+    border-radius: 2px;
+    border: 2px none;
+}
+
+.layout logo {
+    display: flex;
+    width: 200px;
+    height: 24px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.typography logo {
+    color: #000;
+    font-feature-settings: 'cv04' on, 'cv03' on, 'cv02' on, 'cv11' on, 'clig' off, 'liga' off;
+    
+    /* Body (Indo)/b2 */
+    font-family: R-Flex;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 24px */
+}
+
+.layout-hero {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 73px;
+}
+
+.text1-landing {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'cv04' on, 'cv03' on, 'cv02' on, 'cv11' on, 'clig' off, 'liga' off;
+    font-family: R-Flex;
+    font-size: 46px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 69px */
+}
+
+.text2-landing {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: R-Flex;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 27px */
+}
+
+.get-started-button {
+    border-radius: 12px;
+    background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);
+}
+
+.get-started-button :hover {
+    border-radius: 12px;
+    background: var(--primary-button-hover, linear-gradient(180deg, #6B75FF 0%, #535FFF 100%));
+    
+    box-shadow: 0px 12px 16px 0px rgba(0, 0, 0, 0.30);
+}
+
+.card register {
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+}
+
+.card header {
+    border-radius: 12px;
+    background: rgba(55, 57, 81, 0.00);
+}
+
+.card add-product {
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+}
+
+.card-footer {
+    display: flex;
+    width: 1440px;
+    padding: 40px 112px;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: fixed;
+}
+
+.footer-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    flex: 1 0 0;
+}
+
+.text {
+    font-feature-settings: 'cv04' on, 'cv03' on, 'cv02' on, 'cv11' on, 'clig' off, 'liga' off;
+    font-family: R-Flex;
+    font-size: 16px;
+    font-style: normal;
+}
+
+.layout-dashboard {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 11px;
+}
+
+.layout side-bar {
+    background: #EEE8FF;
+    width: 284px;
+    height: 1200px;
+    flex-shrink: 0;
+}
+
+.layout right-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.card-newest-products {
+    border-radius: 8px;
+    background: var(--primary-white-1, #FFF);
+
+    width: 1133px;
+    height: 438px;
+    flex-shrink: 0;
+}
+
+.layout newest-products {
+    display: flex; 
+    width: 1074px; 
+    height: 357px; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 40px; 
+    flex-shrink: 0;
+}
+
+.card-data {
+    border-radius: 8px;
+    background: var(--primary-white-1, #FFF);
+
+    width: 368px;
+    height: 215px;
+    flex-shrink: 0;
+}
+
+#judul-card {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 54px */
+}
+
+.card-product {
+    border-radius: 8px;
+    background: var(--primary-black-3, rgba(0, 0, 0, 0.10));
+
+    width: 225px;
+    height: 263px;
+}
+
+#hello-username {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: R-Flex;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 38.4px */
 }
