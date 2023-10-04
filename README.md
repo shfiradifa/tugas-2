@@ -260,3 +260,19 @@ Pemilihan yang tepat antara keduanya bergantung pada kebutuhan spesifik proyek d
 
 ## Cara Implementasi Checklist:
 
+### 1. Menambahkan Bootstrap ke Aplikasi
+Agar dapat memudahkan saya ketika ingin menggunakan templates yang disediakan framework CSS dari Bootstrap ataupun Tailwind, saya memasukkan kedua meta tag di dalam `base.html`
+
+### 2. Menambahkan navbar pada Aplikasi
+Saya mengambil template navbar dari framework Bootstrap dan disesuaikan dengan nama aplikasi saya, kemudian terdapat 2 button yang mengarahkan ke halaman `dashboard` dan `inventory` serta button logout di sudut kanan navbar. 
+
+### 3. Menambahkan Fitur Edit pada Aplikasi
+Sama seperti fitu delete sebelumnya, saya membuat fungsi `edit_product` dengan parameter `request` untuk menjalankan fitur edit product di `views.py`. Kemudian, di-import ke dalam file `urls.py` pada direktori `main` dan menambahkan path url-nya ke dalam `urlpatterns` di file yang sama. Lalu, saya membuat file html baru di dalam folder `templates` di direktori `main` yang berisikan tampilan halaman edit product. 
+
+### 4. BONUS: Memberikan warna yang berbeda pada baris terakhir dari item pada inventori menggunakan CSS
+Saya mengimplementasikan ini dengan menambahkan `{% if forloop.last %}class="latest-product"{% endif %}` dalam tag `<tr>`. Kemudian, pada file `style.css` di direktori `main/static/main/` saya menambahkan class selector `lastest-product` untuk mengkustomisasi tampilan warna background-nya. 
+
+### 5. Kustomisasi Desain CSS Web App
+Sebelumnya, saya menambahkan 2 halaman web, yaitu `home.html` yang menjadi tampilan awal ketika membuka web dan `inventory.html` yang berisikan tampilan `main.html` pada tugas sebelumnya. Kemudian, halaman `main.html` saya ubah menjadi tampilan dashboard. Kedua halaman tersebut saya tambahkan dengan membuat fungsi di `views.py` dan di-import ke `urls.py` di direktori `main` serta menambahkan url pattern-nya pula. Saya juga menambahkan fitur jumlah total items yang ada di inventory pada tampilan `main.html`.
+
+Untuk tampilan desain CSS-nya, saya membuat file `style.css` seperti dari tugas-tugas sebelumnya untuk membuat css style. Untuk navbar sendiri, saya menggunakan template dari Bootstrap dan disesuaikan dengan tampilan yang saya inginkan. Kemudian, untuk tampilan secara keseluruhannya pertama-tama saya membuat design di figma kemudian baru diimplementasikan di vscode dengan membuat element-element selector (banyaknya class selector) di `style.css`. Implementasinya dilihat dari inspect tampilan yang sudah saya buat di figma.

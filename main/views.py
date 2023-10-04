@@ -25,7 +25,7 @@ def show_main(request):
     total_stock = products.aggregate(Sum('amount'))['amount__sum'] or 0
 
     context = {
-        'name': request.user.username,
+        'username': request.user.username,
         'class': 'PBP A',
         'products': products,
         'last_login': request.COOKIES['last_login'],
@@ -37,7 +37,7 @@ def show_main(request):
 def inventory(request):
     products = Product.objects.filter(user=request.user)
     context = {
-        'name': request.user.username,
+        'username': request.user.username,
         'class': 'PBP A',
         'products': products,
         'last_login': request.COOKIES['last_login'],

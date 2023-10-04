@@ -53,11 +53,7 @@
             <div class="layout side-bar" style="background: #EEE8FF; width: 284px; height: 1200px; margin-bottom: 0%; flex-shrink: 0;">
                 <div style="margin-top: 23px; margin-left: 23px; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 424px;">
                     <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 23px;">
-                        <!-- <img src="assets/profile.svg" width="100" height="100"> -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                        </svg>
+                        <img style="width:100px; height:100px" src="https://lh3.googleusercontent.com/pw/ADCreHej3Arlfz-Of2ulrXCZm1_MEFMs6I2vOTdf1EPjp6tYEMh6rcemjGGvfztD0_KaYIw2GQWIOKyYG8n3vmSL7syirVBWN7zTVfYyursXhDMyMmmIiKqSrnFQW_YYAzir5GI8dj8I-TqyX47QoQ30KrVIMsKoW9EjdxB0_kEY_unoJ9vOwJaNikcOs3PcgikwodmpziJ23CfAxKiuKLeXlieyQL-G5pRZOeR6Thb6rDVgdlnedD7rzWQCdYAdbcVt95BwpNlKMARhJZcjfLQd6Xn4VsdWnUJnnRiUmxU5gL1xtEjSrbZtvyJPNOq-jf2uxUAqs_E4TGyqVI0hnevrVyFLwMkcZBKFFY0R2Rr55fhJTEasFj1UFA_WxHqMmFDw1XysSTvmkMG_QGoEGEgW05Ggskgnqv8o_tCUbrcd_YujFeXbNJ4osVLNz8hVHyXJmSKcfURxGvG-7V53woaBLFVGotdKBdvoiSpUrGtKn3YWuqqqvT7jox-YvPI-YD_55SZ5pKZ01vRM9jtlKpQ3Yqxya0-kCR76mK3c58ul9KyDwtMZio7Het80C3vCRFI4y51P2jrzPBjqPF6S6a5uQDvUMBAfZ8wwiMaC0IflKpp6KPWvEzzhLUENF4_b1UVaAPNnjpKe61fHMdgPPK2LxA8zwqYbqBM698hSFHfmzPaYlJQ1qmMaqOeDJpYghN62aiYFXim7FEE93KUTzQnECyuOay6wX-A-hRWMEp_jFS8kUQ_e5s2xarnF78sLxD2B1eU5-y8AzBw3C7rBJJ05hgJIwWd38oWZRAiI1ISqTjAstqCqd6tTRKnwpNRViaZAuKf_lOhHAT8qcTB5J1vqE5hmVM4qkXd86h6le_w3oUqYPyyqZQJC3X6pHI_jZcIabUfYyIH7vPz3-Ib-G4j9za6x5QNiK-h5-nYqjaTpw3AEIWGrdTfZc5ECobKOi39H7o8Yu2Ugq4RUGxB3wA-i5B9DLKdhnpHmH0Q1c5wrZMPOH2rkfRVX3DWVfvYzx6iTuoI2Z7iebz_z_ApRxY3s3AJph8_p-4b2ISeknlV2YeBLG5TTHvC_h_yW5vwhvbp7WA-1KvgIVcxgog=w100-h100-s-no?authuser=0"/>
                         <h2 id="hello-username" style="width: 234px;height: 80px; color: #000; font-feature-settings: 'clig' off, 'liga' off; font-family: R-Flex; font-size: 32px; font-style: normal; font-weight: 400; line-height: 120%;">
                             Hello, {{username}}!
                         </h2>
@@ -123,24 +119,60 @@
                     </div>
                 </div>
                 <!-- card 4 newest product -->
-                <div class="card-newest-products" style="width: 1133px; height: 418px; flex-shrink: 0;">
-                    <div class="layout newest-products" style="display: flex; width: 1074px; height: 357px; padding: 29px ; flex-direction: column; align-items: flex-start; gap: 20px; flex-shrink: 0;">
+                <div class="card-newest-products" style="width: 1133px; height: 100%; flex-shrink: 0;">
+                    <div class="layout newest-products" style="display: flex; width: 1074px; height: 100%; padding: 29px ; flex-direction: column; align-items: flex-start; gap: 20px; flex-shrink: 0;">
                         <h2 id="judul-card">
                             Products
                         </h2>
                         <div style="display: flex; align-items: flex-start; gap: 58px;">
-                            <div class="card-product">
-                                <!-- card product 1 -->
-                            </div>
-                            <div class="card-product">
-                                <!-- card product 2 -->
-                            </div>
-                            <div class="card-product">
-                                <!-- card product 3 -->
-                            </div>
-                            <div class="card-product">
-                                <!-- card product 4 -->
-                            </div>
+                            {% for product in products %}
+                                <div class="card-dashboard">
+                                    <div class="card-header-dashboard">
+                                        <h2>{{ product.name }}</h2>
+                                    </div>
+                                    <div class="card-body-dashboard">
+                                        <p>Description: {{ product.description }}</p>
+                                        <p>Date Added: {{ product.date_added }}</p>
+                                        <p>Stock:</p>
+
+                                        <form method="POST" action="{% url 'main:subtract_amount' product.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="subtract-button" style="border-width: 0; margin-right: 10px;">-</button>
+                                        </form>
+
+                                        <span id="amount_{{ product.id }}" >
+                                            {{ product.amount }}
+                                        </span>
+
+                                        <!-- add button -->
+                                        <form method="POST" action="{% url 'main:add_amount' product.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="add-button" style="border-width: 0; margin-left: 10px;">+</button>
+                                        </form>
+
+                                        <p class="actions-books">
+                                            <div style="display: flex; flex-direction: row; justify-content: center;">
+                                                <a href="{% url 'main:edit_product' product.pk %}">
+                                                    <button class="action-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                        </svg>
+                                                    </button>
+                                                </a>
+                                                <a href="{% url 'main:delete_product' product.pk %}">
+                                                    <button class="action-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </p>
+                                        
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
