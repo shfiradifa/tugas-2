@@ -412,7 +412,7 @@ Untuk me-refresh data produk secara asynchronous, dilakukan dengan membuat fungs
 pada fungsi tersebut, `document.getElementById("product_table")` akan memperoleh elemen berdasarkan ID nya. Dalam hal ini, elemen yang dituju adalah tag <table> dengan ID `product_table` yang telah dibuat sebelumnya. Kemudian, `innerHTML = ""` akan mengosongkan isi child element dari elemen yang dituju. Lalu, setiap data diambil dari for each loop setiap productnya dengan `products.forEach((item))` menggunakan fungsi `getProducts()`. Kemudian, htmlString kita konkatenasi dengan data produk untuk mengisi tabel. Terakhir, `refreshProducts()` memungkinkan fungsi ini akan dipanggil setiap kali user membuka halaman web.
 
 ### 6. Melakukan perintah `collectstatic`
-Untuk melakukan perintah `collectstatic`, pertama-tama dilakukan `push` terlebih dahulu ke server penyebaran. Setelah itu, kita hanya perlu menjalankan perintah `python manage.py collectstatic`.
+Untuk melakukan perintah `collectstatic`, hanya perlu menjalankan perintah `python manage.py collectstatic`.
 
 ### 7. Add, Push, dan Commit ke GitHub
 Sebagai tahap terakhir, push ke dalam repository GitHub menggunakan perintah berikut pada terminal:

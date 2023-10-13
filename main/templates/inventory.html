@@ -4,7 +4,7 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-    <body style="flex-direction: column;">
+    <body style="flex-direction: column; height: 100%; ">
         <nav class="navbar fixed-top bg-body-tertiary" style="background-color: #36a8ce;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
@@ -50,12 +50,12 @@
             </div>
         </nav>
 
-        <body-dashboard style="background-color: #F4F4F4; width: 100%; font-family: R-Flex; display: flex; justify-content: center; align-items: center;">
-            <div style="display: inline-flex; flex-direction: column; align-items: flex-start;">
-                <div class="layout" style="width: 1440px; height: 550px;"></div>
+        <body-dashboard style="background-color: #F4F4F4; width: 100%; height: 100%; font-family: R-Flex; display: flex; justify-content: center; align-items: center;">
+            <div style="display: inline-flex; flex-direction: column; align-items: flex-start; height: 100%;">
+                <div class="layout" style="width: 1440px; height: 70px;"></div>
                 <div class="layout-dashboard" style="display: inline-flex; height: 100%; align-items: flex-start; gap: 11px;">
-                    <div class="layout side-bar" style="background: #EEE8FF; width: 284px; height: 1200px; margin-bottom: 0%; flex-shrink: 0;">
-                        <div style="margin-top: 23px; margin-left: 23px; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 424px;">
+                    <div class="layout side-bar" style="background: #EEE8FF; width: 284px; height: 100%; margin-bottom: 0%; flex-shrink: 0;">
+                        <div style="height: 100%; margin-top: 23px; margin-left: 23px; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 424px;">
                             <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 23px;">
                                 <!-- <img src="assets/profile.svg" width="100" height="100"> -->
                                 <img style="width:100px; height:100px" src="https://lh3.googleusercontent.com/pw/ADCreHej3Arlfz-Of2ulrXCZm1_MEFMs6I2vOTdf1EPjp6tYEMh6rcemjGGvfztD0_KaYIw2GQWIOKyYG8n3vmSL7syirVBWN7zTVfYyursXhDMyMmmIiKqSrnFQW_YYAzir5GI8dj8I-TqyX47QoQ30KrVIMsKoW9EjdxB0_kEY_unoJ9vOwJaNikcOs3PcgikwodmpziJ23CfAxKiuKLeXlieyQL-G5pRZOeR6Thb6rDVgdlnedD7rzWQCdYAdbcVt95BwpNlKMARhJZcjfLQd6Xn4VsdWnUJnnRiUmxU5gL1xtEjSrbZtvyJPNOq-jf2uxUAqs_E4TGyqVI0hnevrVyFLwMkcZBKFFY0R2Rr55fhJTEasFj1UFA_WxHqMmFDw1XysSTvmkMG_QGoEGEgW05Ggskgnqv8o_tCUbrcd_YujFeXbNJ4osVLNz8hVHyXJmSKcfURxGvG-7V53woaBLFVGotdKBdvoiSpUrGtKn3YWuqqqvT7jox-YvPI-YD_55SZ5pKZ01vRM9jtlKpQ3Yqxya0-kCR76mK3c58ul9KyDwtMZio7Het80C3vCRFI4y51P2jrzPBjqPF6S6a5uQDvUMBAfZ8wwiMaC0IflKpp6KPWvEzzhLUENF4_b1UVaAPNnjpKe61fHMdgPPK2LxA8zwqYbqBM698hSFHfmzPaYlJQ1qmMaqOeDJpYghN62aiYFXim7FEE93KUTzQnECyuOay6wX-A-hRWMEp_jFS8kUQ_e5s2xarnF78sLxD2B1eU5-y8AzBw3C7rBJJ05hgJIwWd38oWZRAiI1ISqTjAstqCqd6tTRKnwpNRViaZAuKf_lOhHAT8qcTB5J1vqE5hmVM4qkXd86h6le_w3oUqYPyyqZQJC3X6pHI_jZcIabUfYyIH7vPz3-Ib-G4j9za6x5QNiK-h5-nYqjaTpw3AEIWGrdTfZc5ECobKOi39H7o8Yu2Ugq4RUGxB3wA-i5B9DLKdhnpHmH0Q1c5wrZMPOH2rkfRVX3DWVfvYzx6iTuoI2Z7iebz_z_ApRxY3s3AJph8_p-4b2ISeknlV2YeBLG5TTHvC_h_yW5vwhvbp7WA-1KvgIVcxgog=w100-h100-s-no?authuser=0"/>
@@ -66,7 +66,7 @@
                             <h5 style="text-align: left; font-family: R-Flex;">Sesi terakhir login:<br>{{ last_login }}</h5>
                         </div>
                     </div>
-                    <div class="layout right-frame" style="display: flex; flex-direction: column; align-items: flex-start; gap: 13px;">
+                    <div class="layout right-frame" style="display: flex; flex-direction: column; align-items: flex-start; gap: 13px; height: 100%; ">
                         <!-- button add a new product -->
                         <!-- <a href="{% url 'main:create_product' %}">
                             <button class="button" style="margin-top: 13px; margin-bottom: 0px ; font-family: Arial; width: 1133px; border-radius: 12px; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);">
