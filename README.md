@@ -1,7 +1,7 @@
 ## Situs Web: [https://shafira-ramadhina-tugas.pbp.cs.ui.ac.id](https://shafira-ramadhina-tugas.pbp.cs.ui.ac.id)
 
-<details>
-<summary>TUGAS 2</summary>
+# TUGAS 2
+
 ## Cara Implementasi Checklist:
 
 ### Pembuatan Proyek Django Baru:
@@ -77,10 +77,9 @@ MVVM merupakan pola arsitektur yang menekankan pada pemisahan logika presentasi 
 ### Perbedaan antara MVC, MVT, dan MVVM
 
 Perbedaan utama antar ketiganya terletak pada cara ketiganya mengatur dan memisahkan komponen dalam pengembangan perangkat lunak. MVC memisahkan aplikasi menjadi Model (data dan logika bisnis), View (tampilan), dan Controller (pengendali interaksi pengguna). MVT yang khususnya dalam kerangka kerja Django, memasukkan Template yang memisahkan tampilan dari logika pengendali, tetapi tidak memiliki pengendali interaksi yang eksplisit seperti MVC. MVVM menggunakan ViewModel sebagai perantara antara Model (data) dan View (tampilan), dengan ViewModel mengelola tampilan dan interaksi pengguna, memungkinkan pemisahan yang lebih kuat antara tampilan dan logika bisnis.
-</details>
 
-<details>
-<summary>TUGAS 3</summary>
+# TUGAS 3
+
 ## Perbedaan Form POST dan Form GET dalam Django
 
 Dalam Django, terdapat dua metode untuk mengirim data dari client ke server: **POST** dan **GET**. Utamanya, perbedaan antar keduanya, yaitu:
@@ -148,10 +147,9 @@ git push -u origin main
 ### JSON
 ![JSON Preview](/documentations/postman_json.png)
 ![JSON by ID Preview](/documentations/postman_json_id.png)
-</details>
 
-<details>
-<summary>TUGAS 4</summary>
+# TUGAS 4
+
 ## Cara Implementasi Checklist:
 
 ### 1. Implementasi Fungsi Registrasi, Login, dan Logout
@@ -198,10 +196,9 @@ Cookies adalah data atau informasi yang disimpan di komputer pengguna saat pengg
 ## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
 
 Penggunaan cookies dalam pengembangan web dapat aman secara default apabila digunakan dengan benar. Namun, jika penggunaannya tidak benar dapat menjadi risiko yang perlu dihindari. Seperti informasi sensitif yang meliputi kata sandi atau data pribadi lainnya yang tidak dienkripsi secara memadai akan berpotensi terhadap risiko keamanan data pengguna itu sendiri. Kemudian, apabila data telah tercuri, maka pengguna tidak dapat mengambil alih kembali akun pengguna. Selain dicuri, cookies ini juga dapat menjadi target serangan XSS (penyisipan script berbahaya). Untuk menghindarinya, sebaiknya pastikan dienkripsi dengan aman menggunakan HTTPS sehingga ketika melakukan pengiriman ookies dari klien ke server atau sebaliknya, data telah dienkripsi dengan baik dan aman secara default.
-</details>
 
-<details>
-<summary>TUGAS 5</summary>
+# TUGAS 5
+
 ## Manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya?
 
 **Element Selector**
@@ -279,10 +276,9 @@ Saya mengimplementasikan ini dengan menambahkan `{% if forloop.last %}class="lat
 Sebelumnya, saya menambahkan 2 halaman web, yaitu `home.html` yang menjadi tampilan awal ketika membuka web dan `inventory.html` yang berisikan tampilan `main.html` pada tugas sebelumnya. Kemudian, halaman `main.html` saya ubah menjadi tampilan dashboard. Kedua halaman tersebut saya tambahkan dengan membuat fungsi di `views.py` dan di-import ke `urls.py` di direktori `main` serta menambahkan url pattern-nya pula. Saya juga menambahkan fitur jumlah total items yang ada di inventory pada tampilan `main.html`.
 
 Untuk tampilan desain CSS-nya, saya membuat file `style.css` seperti dari tugas-tugas sebelumnya untuk membuat css style. Untuk navbar sendiri, saya menggunakan template dari Bootstrap dan disesuaikan dengan tampilan yang saya inginkan. Kemudian, untuk tampilan secara keseluruhannya pertama-tama saya membuat design di figma kemudian baru diimplementasikan di vscode dengan membuat element-element selector (banyaknya class selector) di `style.css`. Implementasinya dilihat dari inspect tampilan yang sudah saya buat di figma.
-</details>
 
-<details>
-<summary>TUGAS 6</summary>
+# TUGAS 6
+
 ## Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
 Perbedaan antara asynchronous programming dengan synchronous programming terletak pada sistem/urutan pengerjaannya, dimana tugas-tugas dalam **asynchronous programming** dijalankan secara paralel atau independen tanpa menunggu tugas lain selesai,  dalam **synchronous programming** membutuhkan tugas-tugas untuk dijalankan secara berurutan dan menunggu tugas sebelumnya selesai sebelum melanjutkan.
 ## Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
@@ -447,4 +443,3 @@ git add .
 git commit -m "<pesan_commit>"
 git push -u origin main
 ``` 
-</details>
