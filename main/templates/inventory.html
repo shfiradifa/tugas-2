@@ -2,158 +2,243 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<nav class="navbar fixed-top bg-body-tertiary" style="background-color: #36a8ce;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <div class="layout logo" style="color: #000; font-feature-settings: 'cv04' on, 'cv03' on, 'cv02' on, 'cv11' on, 'clig' off, 'liga' off; font-family: R-Flex; font-size: 16px; font-style: normal; font-weight: 700; line-height: 150%;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M1 21.98C1 22.54 1.45 22.99 2.01 22.99H15C15.56 22.99 16.01 22.54 16.01 21.98V21H1V21.98ZM8.5 8.99C4.75 8.99 1 11 1 15H16C16 11 12.25 8.99 8.5 8.99ZM3.62 13C4.73 11.45 7.09 10.99 8.5 10.99C9.91 10.99 12.27 11.45 13.38 13H3.62ZM1 17H16V19H1V17ZM18 5V1H16V5H11L11.23 7H20.79L19.39 21H18V23H19.72C20.56 23 21.25 22.35 21.35 21.53L23 5H18Z" fill="url(#paint0_linear_15_15359)"/>
-                    <defs>
-                      <linearGradient id="paint0_linear_15_15359" x1="12" y1="1" x2="12" y2="23" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#5200FF"/>
-                        <stop offset="1" stop-color="#76599B"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                Warung Uncle Muthu
-            </div>
-        </a>
-
-        <ul class="nav nav-underline">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'main:show_main' %}">
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.004-.001.274-.11a.75.75 0 0 1 .558 0l.274.11.004.001 6.971 2.789Zm-1.374.527L8 5.962 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339Z"/>
-                    </svg>
-                    Inventory
-                </a>
-            </li>
-        </ul>
-
-        <a href="{% url 'main:logout' %}">
-            <button class="button" style="padding: 8px 25px; border-radius: 12px; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);">
-                Logout
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                </svg>
-            </button>
-        </a>
-    </div>
-</nav>
-
-<body-dashboard style="background-color: #F4F4F4; width: 100%; font-family: R-Flex; display: flex; justify-content: center; align-items: center;">
-    <div style="display: inline-flex; flex-direction: column; align-items: flex-start;">
-        <div class="layout" style="width: 1440px; height: 550px;"></div>
-        <div class="layout-dashboard" style="display: inline-flex; height: 100%; align-items: flex-start; gap: 11px;">
-            <div class="layout side-bar" style="background: #EEE8FF; width: 284px; height: 1200px; margin-bottom: 0%; flex-shrink: 0;">
-                <div style="margin-top: 23px; margin-left: 23px; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 424px;">
-                    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 23px;">
-                        <!-- <img src="assets/profile.svg" width="100" height="100"> -->
-                        <img style="width:100px; height:100px" src="https://lh3.googleusercontent.com/pw/ADCreHej3Arlfz-Of2ulrXCZm1_MEFMs6I2vOTdf1EPjp6tYEMh6rcemjGGvfztD0_KaYIw2GQWIOKyYG8n3vmSL7syirVBWN7zTVfYyursXhDMyMmmIiKqSrnFQW_YYAzir5GI8dj8I-TqyX47QoQ30KrVIMsKoW9EjdxB0_kEY_unoJ9vOwJaNikcOs3PcgikwodmpziJ23CfAxKiuKLeXlieyQL-G5pRZOeR6Thb6rDVgdlnedD7rzWQCdYAdbcVt95BwpNlKMARhJZcjfLQd6Xn4VsdWnUJnnRiUmxU5gL1xtEjSrbZtvyJPNOq-jf2uxUAqs_E4TGyqVI0hnevrVyFLwMkcZBKFFY0R2Rr55fhJTEasFj1UFA_WxHqMmFDw1XysSTvmkMG_QGoEGEgW05Ggskgnqv8o_tCUbrcd_YujFeXbNJ4osVLNz8hVHyXJmSKcfURxGvG-7V53woaBLFVGotdKBdvoiSpUrGtKn3YWuqqqvT7jox-YvPI-YD_55SZ5pKZ01vRM9jtlKpQ3Yqxya0-kCR76mK3c58ul9KyDwtMZio7Het80C3vCRFI4y51P2jrzPBjqPF6S6a5uQDvUMBAfZ8wwiMaC0IflKpp6KPWvEzzhLUENF4_b1UVaAPNnjpKe61fHMdgPPK2LxA8zwqYbqBM698hSFHfmzPaYlJQ1qmMaqOeDJpYghN62aiYFXim7FEE93KUTzQnECyuOay6wX-A-hRWMEp_jFS8kUQ_e5s2xarnF78sLxD2B1eU5-y8AzBw3C7rBJJ05hgJIwWd38oWZRAiI1ISqTjAstqCqd6tTRKnwpNRViaZAuKf_lOhHAT8qcTB5J1vqE5hmVM4qkXd86h6le_w3oUqYPyyqZQJC3X6pHI_jZcIabUfYyIH7vPz3-Ib-G4j9za6x5QNiK-h5-nYqjaTpw3AEIWGrdTfZc5ECobKOi39H7o8Yu2Ugq4RUGxB3wA-i5B9DLKdhnpHmH0Q1c5wrZMPOH2rkfRVX3DWVfvYzx6iTuoI2Z7iebz_z_ApRxY3s3AJph8_p-4b2ISeknlV2YeBLG5TTHvC_h_yW5vwhvbp7WA-1KvgIVcxgog=w100-h100-s-no?authuser=0"/>
-                        <h2 id="hello-username" style="width: 234px;height: 80px; color: #000; font-feature-settings: 'clig' off, 'liga' off; font-family: R-Flex; font-size: 32px; font-style: normal; font-weight: 400; line-height: 120%;">
-                            Hello, {{username}}!
-                        </h2>
-                    </div>
-                    <h5 style="text-align: left; font-family: R-Flex;">Sesi terakhir login:<br>{{ last_login }}</h5>
-                </div>
-            </div>
-            <div class="layout right-frame" style="display: flex; flex-direction: column; align-items: flex-start; gap: 13px;">
-                <!-- button add a new product -->
-                <a href="{% url 'main:create_product' %}">
-                    <button class="button" style="margin-top: 13px; margin-bottom: 0px ; font-family: Arial; width: 1133px; border-radius: 12px; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-dotted" viewBox="0 0 16 16">
-                            <path d="M2.5 0c-.166 0-.33.016-.487.048l.194.98A1.51 1.51 0 0 1 2.5 1h.458V0H2.5zm2.292 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zm1.833 0h-.916v1h.916V0zm1.834 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zM13.5 0h-.458v1h.458c.1 0 .199.01.293.029l.194-.981A2.51 2.51 0 0 0 13.5 0zm2.079 1.11a2.511 2.511 0 0 0-.69-.689l-.556.831c.164.11.305.251.415.415l.83-.556zM1.11.421a2.511 2.511 0 0 0-.689.69l.831.556c.11-.164.251-.305.415-.415L1.11.422zM16 2.5c0-.166-.016-.33-.048-.487l-.98.194c.018.094.028.192.028.293v.458h1V2.5zM.048 2.013A2.51 2.51 0 0 0 0 2.5v.458h1V2.5c0-.1.01-.199.029-.293l-.981-.194zM0 3.875v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 5.708v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 7.542v.916h1v-.916H0zm15 .916h1v-.916h-1v.916zM0 9.375v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .916v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .917v.458c0 .166.016.33.048.487l.98-.194A1.51 1.51 0 0 1 1 13.5v-.458H0zm16 .458v-.458h-1v.458c0 .1-.01.199-.029.293l.981.194c.032-.158.048-.32.048-.487zM.421 14.89c.183.272.417.506.69.689l.556-.831a1.51 1.51 0 0 1-.415-.415l-.83.556zm14.469.689c.272-.183.506-.417.689-.69l-.831-.556c-.11.164-.251.305-.415.415l.556.83zm-12.877.373c.158.032.32.048.487.048h.458v-1H2.5c-.1 0-.199-.01-.293-.029l-.194.981zM13.5 16c.166 0 .33-.016.487-.048l-.194-.98A1.51 1.51 0 0 1 13.5 15h-.458v1h.458zm-9.625 0h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zm1.834-1v1h.916v-1h-.916zm1.833 1h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+<!DOCTYPE html>
+<html lang="en">
+    <body style="flex-direction: column;">
+        <nav class="navbar fixed-top bg-body-tertiary" style="background-color: #36a8ce;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <div class="layout logo" style="color: #000; font-feature-settings: 'cv04' on, 'cv03' on, 'cv02' on, 'cv11' on, 'clig' off, 'liga' off; font-family: R-Flex; font-size: 16px; font-style: normal; font-weight: 700; line-height: 150%;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M1 21.98C1 22.54 1.45 22.99 2.01 22.99H15C15.56 22.99 16.01 22.54 16.01 21.98V21H1V21.98ZM8.5 8.99C4.75 8.99 1 11 1 15H16C16 11 12.25 8.99 8.5 8.99ZM3.62 13C4.73 11.45 7.09 10.99 8.5 10.99C9.91 10.99 12.27 11.45 13.38 13H3.62ZM1 17H16V19H1V17ZM18 5V1H16V5H11L11.23 7H20.79L19.39 21H18V23H19.72C20.56 23 21.25 22.35 21.35 21.53L23 5H18Z" fill="url(#paint0_linear_15_15359)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_15_15359" x1="12" y1="1" x2="12" y2="23" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#5200FF"/>
+                                <stop offset="1" stop-color="#76599B"/>
+                            </linearGradient>
+                            </defs>
                         </svg>
-                        Add a New Product
+                        Warung Uncle Muthu
+                    </div>
+                </a>
+
+                <ul class="nav nav-underline">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main:show_main' %}">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.004-.001.274-.11a.75.75 0 0 1 .558 0l.274.11.004.001 6.971 2.789Zm-1.374.527L8 5.962 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339Z"/>
+                            </svg>
+                            Inventory
+                        </a>
+                    </li>
+                </ul>
+
+                <a href="{% url 'main:logout' %}">
+                    <button class="button" style="padding: 8px 25px; border-radius: 12px; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);">
+                        Logout
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        </svg>
                     </button>
                 </a>
-                <!-- card 4 newest product -->
-                <div class="card-newest-products" style="width: 1133px; height: 100%;">
-                    <p class="item-count" style="margin-top: 15px; text-align: center; font-family: R-Flex;">Kamu menyimpan {{ products|length }} produk pada aplikasi ini.</p>
-                    <table style="width:100%">
-                        <tr style="text-align: center; background-color: #7072db; color: white;">
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Description</th>
-                            <th>Stock</th>
-                            <th>Date Added</th>
-                            <th>Activity</th>
-                        </tr>
-                    
-                        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-                    
-                        {% for product in products %}
-                            <tr {% if forloop.last %}class="latest-product"{% endif %}>
-                                <td class="text-left">{{product.name}}</td>
-                                <td class="text-right">Rp{{product.price}}</td>
-                                <td class="text-left">{{product.description}}</td>
-                                <td class="text-center" >
-                                    <div style="display: flex; flex-direction: row; justify-content: center;">
-                                        <!-- substract button -->
-                                        <form method="POST" action="{% url 'main:subtract_amount' product.id %}">
-                                            {% csrf_token %}
-                                            <button type="submit" class="subtract-button" style="border-width: 0; margin-right: 10px;">-</button>
-                                        </form>
+            </div>
+        </nav>
 
-                                        <span id="amount_{{ product.id }}" >
-                                            {{ product.amount }}
-                                        </span>
-
-                                        <!-- add button -->
-                                        <form method="POST" action="{% url 'main:add_amount' product.id %}">
+        <body-dashboard style="background-color: #F4F4F4; width: 100%; font-family: R-Flex; display: flex; justify-content: center; align-items: center;">
+            <div style="display: inline-flex; flex-direction: column; align-items: flex-start;">
+                <div class="layout" style="width: 1440px; height: 550px;"></div>
+                <div class="layout-dashboard" style="display: inline-flex; height: 100%; align-items: flex-start; gap: 11px;">
+                    <div class="layout side-bar" style="background: #EEE8FF; width: 284px; height: 1200px; margin-bottom: 0%; flex-shrink: 0;">
+                        <div style="margin-top: 23px; margin-left: 23px; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 424px;">
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 23px;">
+                                <!-- <img src="assets/profile.svg" width="100" height="100"> -->
+                                <img style="width:100px; height:100px" src="https://lh3.googleusercontent.com/pw/ADCreHej3Arlfz-Of2ulrXCZm1_MEFMs6I2vOTdf1EPjp6tYEMh6rcemjGGvfztD0_KaYIw2GQWIOKyYG8n3vmSL7syirVBWN7zTVfYyursXhDMyMmmIiKqSrnFQW_YYAzir5GI8dj8I-TqyX47QoQ30KrVIMsKoW9EjdxB0_kEY_unoJ9vOwJaNikcOs3PcgikwodmpziJ23CfAxKiuKLeXlieyQL-G5pRZOeR6Thb6rDVgdlnedD7rzWQCdYAdbcVt95BwpNlKMARhJZcjfLQd6Xn4VsdWnUJnnRiUmxU5gL1xtEjSrbZtvyJPNOq-jf2uxUAqs_E4TGyqVI0hnevrVyFLwMkcZBKFFY0R2Rr55fhJTEasFj1UFA_WxHqMmFDw1XysSTvmkMG_QGoEGEgW05Ggskgnqv8o_tCUbrcd_YujFeXbNJ4osVLNz8hVHyXJmSKcfURxGvG-7V53woaBLFVGotdKBdvoiSpUrGtKn3YWuqqqvT7jox-YvPI-YD_55SZ5pKZ01vRM9jtlKpQ3Yqxya0-kCR76mK3c58ul9KyDwtMZio7Het80C3vCRFI4y51P2jrzPBjqPF6S6a5uQDvUMBAfZ8wwiMaC0IflKpp6KPWvEzzhLUENF4_b1UVaAPNnjpKe61fHMdgPPK2LxA8zwqYbqBM698hSFHfmzPaYlJQ1qmMaqOeDJpYghN62aiYFXim7FEE93KUTzQnECyuOay6wX-A-hRWMEp_jFS8kUQ_e5s2xarnF78sLxD2B1eU5-y8AzBw3C7rBJJ05hgJIwWd38oWZRAiI1ISqTjAstqCqd6tTRKnwpNRViaZAuKf_lOhHAT8qcTB5J1vqE5hmVM4qkXd86h6le_w3oUqYPyyqZQJC3X6pHI_jZcIabUfYyIH7vPz3-Ib-G4j9za6x5QNiK-h5-nYqjaTpw3AEIWGrdTfZc5ECobKOi39H7o8Yu2Ugq4RUGxB3wA-i5B9DLKdhnpHmH0Q1c5wrZMPOH2rkfRVX3DWVfvYzx6iTuoI2Z7iebz_z_ApRxY3s3AJph8_p-4b2ISeknlV2YeBLG5TTHvC_h_yW5vwhvbp7WA-1KvgIVcxgog=w100-h100-s-no?authuser=0"/>
+                                <h2 id="hello-username" style="width: 234px;height: 80px; color: #000; font-feature-settings: 'clig' off, 'liga' off; font-family: R-Flex; font-size: 32px; font-style: normal; font-weight: 400; line-height: 120%;">
+                                    Hello, {{username}}!
+                                </h2>
+                            </div>
+                            <h5 style="text-align: left; font-family: R-Flex;">Sesi terakhir login:<br>{{ last_login }}</h5>
+                        </div>
+                    </div>
+                    <div class="layout right-frame" style="display: flex; flex-direction: column; align-items: flex-start; gap: 13px;">
+                        <!-- button add a new product -->
+                        <!-- <a href="{% url 'main:create_product' %}">
+                            <button class="button" style="margin-top: 13px; margin-bottom: 0px ; font-family: Arial; width: 1133px; border-radius: 12px; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-dotted" viewBox="0 0 16 16">
+                                    <path d="M2.5 0c-.166 0-.33.016-.487.048l.194.98A1.51 1.51 0 0 1 2.5 1h.458V0H2.5zm2.292 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zm1.833 0h-.916v1h.916V0zm1.834 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zM13.5 0h-.458v1h.458c.1 0 .199.01.293.029l.194-.981A2.51 2.51 0 0 0 13.5 0zm2.079 1.11a2.511 2.511 0 0 0-.69-.689l-.556.831c.164.11.305.251.415.415l.83-.556zM1.11.421a2.511 2.511 0 0 0-.689.69l.831.556c.11-.164.251-.305.415-.415L1.11.422zM16 2.5c0-.166-.016-.33-.048-.487l-.98.194c.018.094.028.192.028.293v.458h1V2.5zM.048 2.013A2.51 2.51 0 0 0 0 2.5v.458h1V2.5c0-.1.01-.199.029-.293l-.981-.194zM0 3.875v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 5.708v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 7.542v.916h1v-.916H0zm15 .916h1v-.916h-1v.916zM0 9.375v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .916v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .917v.458c0 .166.016.33.048.487l.98-.194A1.51 1.51 0 0 1 1 13.5v-.458H0zm16 .458v-.458h-1v.458c0 .1-.01.199-.029.293l.981.194c.032-.158.048-.32.048-.487zM.421 14.89c.183.272.417.506.69.689l.556-.831a1.51 1.51 0 0 1-.415-.415l-.83.556zm14.469.689c.272-.183.506-.417.689-.69l-.831-.556c-.11.164-.251.305-.415.415l.556.83zm-12.877.373c.158.032.32.048.487.048h.458v-1H2.5c-.1 0-.199-.01-.293-.029l-.194.981zM13.5 16c.166 0 .33-.016.487-.048l-.194-.98A1.51 1.51 0 0 1 13.5 15h-.458v1h.458zm-9.625 0h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zm1.834-1v1h.916v-1h-.916zm1.833 1h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                </svg>
+                                Add a New Product
+                            </button>
+                        </a> -->
+                        <!-- AJAX AAHHHHH -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="form" onsubmit="return false;">
                                             {% csrf_token %}
-                                            <button type="submit" class="add-button" style="border-width: 0; margin-left: 10px;">+</button>
+                                            <div class="mb-3">
+                                                <label for="name" class="col-form-label">Name:</label>
+                                                <input type="text" class="form-control" id="name" name="name"></input>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="price" class="col-form-label">Price:</label>
+                                                <input type="number" class="form-control" id="price" name="price"></input>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="description" class="col-form-label">Description:</label>
+                                                <textarea class="form-control" id="description" name="description"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="amount" class="col-form-label">Stock:</label>
+                                                <input type="number" class="form-control" id="amount" name="amount"></input>
+                                            </div>
                                         </form>
                                     </div>
-                                </td>
-                                <td class="text-center" >{{product.date_added}}</td>
-                                <td class="text-center" >
-                                    <div style="display: flex; flex-direction: row; justify-content: center;">
-                                        <a href="{% url 'main:edit_product' product.pk %}">
-                                            <button class="action-button">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                </svg>
-                                            </button>
-                                        </a>
-                                        <a href="{% url 'main:delete_product' product.pk %}">
-                                            <button class="action-button">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                                </svg>
-                                            </button>
-                                        </a>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
                                     </div>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-top: 13px; margin-bottom: 0px ; font-family: Arial; width: 1133px; border-radius: 12px; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-dotted" viewBox="0 0 16 16">
+                                <path d="M2.5 0c-.166 0-.33.016-.487.048l.194.98A1.51 1.51 0 0 1 2.5 1h.458V0H2.5zm2.292 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zm1.833 0h-.916v1h.916V0zm1.834 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zM13.5 0h-.458v1h.458c.1 0 .199.01.293.029l.194-.981A2.51 2.51 0 0 0 13.5 0zm2.079 1.11a2.511 2.511 0 0 0-.69-.689l-.556.831c.164.11.305.251.415.415l.83-.556zM1.11.421a2.511 2.511 0 0 0-.689.69l.831.556c.11-.164.251-.305.415-.415L1.11.422zM16 2.5c0-.166-.016-.33-.048-.487l-.98.194c.018.094.028.192.028.293v.458h1V2.5zM.048 2.013A2.51 2.51 0 0 0 0 2.5v.458h1V2.5c0-.1.01-.199.029-.293l-.981-.194zM0 3.875v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 5.708v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 7.542v.916h1v-.916H0zm15 .916h1v-.916h-1v.916zM0 9.375v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .916v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .917v.458c0 .166.016.33.048.487l.98-.194A1.51 1.51 0 0 1 1 13.5v-.458H0zm16 .458v-.458h-1v.458c0 .1-.01.199-.029.293l.981.194c.032-.158.048-.32.048-.487zM.421 14.89c.183.272.417.506.69.689l.556-.831a1.51 1.51 0 0 1-.415-.415l-.83.556zm14.469.689c.272-.183.506-.417.689-.69l-.831-.556c-.11.164-.251.305-.415.415l.556.83zm-12.877.373c.158.032.32.048.487.048h.458v-1H2.5c-.1 0-.199-.01-.293-.029l-.194.981zM13.5 16c.166 0 .33-.016.487-.048l-.194-.98A1.51 1.51 0 0 1 13.5 15h-.458v1h.458zm-9.625 0h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zm1.834-1v1h.916v-1h-.916zm1.833 1h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            </svg>
+                            Add Product by AJAX
+                        </button>
+                        <script>
+                            async function getProducts() {
+                                return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+                            }
+                            async function refreshProducts() {
+                                document.getElementById("product_table").innerHTML = ""
+                                const products = await getProducts()
+                                let htmlString = `<tr>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Stock</th>
+                                    <th>Date Added</th>
+                                </tr>`
+                                products.forEach((item) => {
+                                    htmlString += `\n<tr>
+                                    <td>${item.fields.name}</td>
+                                    <td>${item.fields.price}</td>
+                                    <td>${item.fields.description}</td>
+                                    <td>${item.fields.amount}</td>
+                                    <td>${item.fields.date_added}</td>
+                                </tr>` 
+                                })
+                                
+                                document.getElementById("product_table").innerHTML = htmlString
+                            }
+                            refreshProducts()
+                            function addProduct() {
+                                fetch("{% url 'main:add_product_ajax' %}", {
+                                    method: "POST",
+                                    body: new FormData(document.querySelector('#form'))
+                                }).then(refreshProducts)
+                    
+                                document.getElementById("form").reset()
+                                return false
+                            }
+                            document.getElementById("button_add").onclick = addProduct
+                        </script>
+                        <!-- card 4 newest product -->
+                        <div class="card-newest-products" style="width: 1133px; height: 100%;">
+                            <p class="item-count" style="margin-top: 15px; text-align: center; font-family: R-Flex;">Kamu menyimpan {{ products|length }} produk pada aplikasi ini.</p>
+                            <table id="product_table", style="width:100%">
+                                <tr style="text-align: center; background-color: #7072db; color: white;">
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Stock</th>
+                                    <th>Date Added</th>
+                                    <th>Activity</th>
+                                </tr>
+                            
+                                {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+                            
+                                {% for product in products %}
+                                    <tr {% if forloop.last %}class="latest-product"{% endif %}>
+                                        <td class="text-left">{{product.name}}</td>
+                                        <td class="text-right">Rp{{product.price}}</td>
+                                        <td class="text-left">{{product.description}}</td>
+                                        <td class="text-center" >
+                                            <div style="display: flex; flex-direction: row; justify-content: center;">
+                                                <!-- substract button -->
+                                                <form method="POST" action="{% url 'main:subtract_amount' product.id %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="subtract-button" style="border-width: 0; margin-right: 10px;">-</button>
+                                                </form>
+
+                                                <span id="amount_{{ product.id }}" >
+                                                    {{ product.amount }}
+                                                </span>
+
+                                                <!-- add button -->
+                                                <form method="POST" action="{% url 'main:add_amount' product.id %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="add-button" style="border-width: 0; margin-left: 10px;">+</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                        <td class="text-center" >{{product.date_added}}</td>
+                                        <td class="text-center" >
+                                            <div style="display: flex; flex-direction: row; justify-content: center;">
+                                                <a href="{% url 'main:edit_product' product.pk %}">
+                                                    <button class="action-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                        </svg>
+                                                    </button>
+                                                </a>
+                                                <a href="{% url 'main:delete_product' product.pk %}">
+                                                    <button class="action-button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</body-dashboard>
+        </body-dashboard>
 
-<!-- <div class="card-footer" style="    border-radius: 24px 24px 0px 0px; border: 1px solid var(--primary-white-4, rgba(255, 255, 255, 0.10)); background: #FFF;">
-    <div class="footer-layout">
-        <img href="/assets/logo.png" alt="" width="30" height="auto" style="display: flex; padding-right: 0px; align-items: center;">
-        <div style="display: flex; align-items: flex-start; gap: 48px;">
-            <p class="text" style="    font-weight: 700; line-height: 150%;">Warung Uncle Muthu</p>
-            <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                <p class="text" style="font-weight: 600; line-height: 150%;">Home</p>
-                <p class="text" style="font-weight: 600; line-height: 150%;">Inventory</p>
+        <!-- <div class="card-footer" style="    border-radius: 24px 24px 0px 0px; border: 1px solid var(--primary-white-4, rgba(255, 255, 255, 0.10)); background: #FFF;">
+            <div class="footer-layout">
+                <img href="/assets/logo.png" alt="" width="30" height="auto" style="display: flex; padding-right: 0px; align-items: center;">
+                <div style="display: flex; align-items: flex-start; gap: 48px;">
+                    <p class="text" style="    font-weight: 700; line-height: 150%;">Warung Uncle Muthu</p>
+                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <p class="text" style="font-weight: 600; line-height: 150%;">Home</p>
+                        <p class="text" style="font-weight: 600; line-height: 150%;">Inventory</p>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
+                    <p class="text" style="font-weight: 600; line-height: 150%;">© 2023 Warung Uncle Muthu. All rights reserved.</p>
+                </div>
             </div>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
-            <p class="text" style="font-weight: 600; line-height: 150%;">© 2023 Warung Uncle Muthu. All rights reserved.</p>
-        </div>
-    </div>
-</div> -->
+        </div> -->
+    </body>
+</html>
 {% endblock content %}

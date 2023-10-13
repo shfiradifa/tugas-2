@@ -276,3 +276,148 @@ Saya mengimplementasikan ini dengan menambahkan `{% if forloop.last %}class="lat
 Sebelumnya, saya menambahkan 2 halaman web, yaitu `home.html` yang menjadi tampilan awal ketika membuka web dan `inventory.html` yang berisikan tampilan `main.html` pada tugas sebelumnya. Kemudian, halaman `main.html` saya ubah menjadi tampilan dashboard. Kedua halaman tersebut saya tambahkan dengan membuat fungsi di `views.py` dan di-import ke `urls.py` di direktori `main` serta menambahkan url pattern-nya pula. Saya juga menambahkan fitur jumlah total items yang ada di inventory pada tampilan `main.html`.
 
 Untuk tampilan desain CSS-nya, saya membuat file `style.css` seperti dari tugas-tugas sebelumnya untuk membuat css style. Untuk navbar sendiri, saya menggunakan template dari Bootstrap dan disesuaikan dengan tampilan yang saya inginkan. Kemudian, untuk tampilan secara keseluruhannya pertama-tama saya membuat design di figma kemudian baru diimplementasikan di vscode dengan membuat element-element selector (banyaknya class selector) di `style.css`. Implementasinya dilihat dari inspect tampilan yang sudah saya buat di figma.
+
+# TUGAS 6
+
+## Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+Perbedaan antara asynchronous programming dengan synchronous programming terletak pada sistem/urutan pengerjaannya, dimana tugas-tugas dalam **asynchronous programming** dijalankan secara paralel atau independen tanpa menunggu tugas lain selesai,  dalam **synchronous programming** membutuhkan tugas-tugas untuk dijalankan secara berurutan dan menunggu tugas sebelumnya selesai sebelum melanjutkan.
+## Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+Paradigma event-driven programming adalah paradigma pemrograman yang berfokus pada reaksi terhadap peristiwa-peristiwa (event) yang terjadi di sistem, seperti klik mouse, tekan tombol, atau keyboard input. Salah satu contoh penerapannya pada tugas ini adalah memanggil fungsi `addProduct` dengan menggunakan `fetch` API untuk mengirim permintaan POST ke endpoint add_product_ajax dengan data formulir. Setelah itu, baru fungsi `refreshProducts` dijalankan untuk memperbarui tampilan produk tanpa perlu me-refresh seluruh halaman.
+## Jelaskan penerapan asynchronous programming pada AJAX.
+ Asynchronous programming pada AJAX diterapkan dengan menggunakan objek XMLHttpRequest atau Fetch API untuk mengirim dan menerima data dari server secara asinkron, tanpa mengganggu tampilan halaman web sehingga halaman web dapat diperbarui secara dinamis tanpa perlu me-refresh seluruh halaman. 
+## Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+Fetch API dan jQuery AJAX digunakan untuk melakukan permintaan AJAX, tetapi ada beberapa perbedaan di antara keduanya. Secara umum, Fetch API lebih baru dan lebih sesuai dengan standar web, sedangkan jQuery AJAX lebih lama dan lebih bergantung pada library jQuery. Beberapa perbedaan lebih jelas antara keduanya adalah:
+- Secara default, Fetch API tidak akan mengirim atau menerima cookie apa pun dari server, sehingga menghasilkan permintaan yang tidak terautentikasi apabila situs bergantung pada pemeliharaan sesi penggunanya (perlu menyetel opsi inisialisasi credentials untuk mengirim cookie). Sementara itu, jQuery AJAX akan mengirim cookie secara default, kecuali jika opsi xhrFields.withCredentials disetel menjadi false. 
+- Fetch API memiliki metode bawaan untuk berbagai jenis data, seperti arrayBuffer, blob, formData, json, dan text. Sedangkan jQuery AJAX hanya memiliki metode bawaan untuk json, jsonp, script, text, dan xml.
+- Fetch API mengembalikan Promise yang tidak akan ditolak pada status kesalahan HTTP, seperti HTTP 404 atau 500 misalnya. Sebaliknya, Promise akan terselesaikan secara normal dan hanya akan ditolak pada kegagalan jaringan atau jika ada yang mencegah permintaan selesai. Sedangkan jQuery AJAX akan menolak Promise jika responsnya bukan status sukses (200-299) atau jika terjadi kesalahan jaringan.
+Menurut saya, teknologi mana yang lebih baik untuk digunakan bergantung pada preferensi dan kebutuhan project. Namun, apabila kita perhatikan trend pengembangan web sekarang, Fetch API menjadi pilihan yang lebih baik menurut saya pribadi karena lebih modern, lebih fleksibel, dan lebih sesuai dengan standar web.
+## Cara Implementasi Checklist:
+### 1. Mengubah kode cards data item agar dapat mendukung AJAX GET dan melakukan pengambilan task menggunakan AJAX GET
+
+
+### 2. Membuat sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item
+Sebelumnya, saya mengahpus button `Add New product` pada tugas 5 dan menggantinya dengan button sesuai AJAX seperti berikut:
+```html
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Book by AJAX</button>
+```
+Atribut `data-bs-toggle="modal"` akan membuka modal form secara pop-up dengan indikasi modal yang dibuka adalah yang memiliki ID `exampleModal` pada atribut `data-bs-target="#exampleModal"`. Untuk tampilan modal form tersebut, diimplementasi dengan kode berikut:
+```html
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Stock:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+Untuk mendukung kode di atas, dibuat fungsi `addProduct` dalam bentuk kode script seperti berikut:
+```html
+<script>
+    ...
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addProduct
+</script>
+```
+### 3. Membuat fungsi view baru untuk menambahkan item baru ke dalam basis data
+Untuk menambahkan item baru ke dalam database, saya membuat fungsi baru, yaitu `add_product_ajax` dengan parameter `request` pada `views.py` yg akan menyimpan value `name`, `price`, `description`, dan `amount` pada request. Kemudian values tersebut disimpan ke dalam objek Product baru. Fungsi ini dibuat dengan kode berikut:
+```html
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        description = request.POST.get("description")
+        amount = request.POST.get("amount")
+        user = request.user
+
+        new_product = Product(name=name, price=price, description=description, amount=amount, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+```
+### 4. Membuat path `/create-ajax/` yang mengarah ke fungsi view yang baru dibuat dan mengubungkan form di dalam modal ke path `/create-ajax/`
+Untuk menambahkan routing untuk fungsi `add_product_ajax`, dilakukan dengan menyisipkan path baru ke dalam `urlpatterns` pada file `urls.py` di direktori `main`. Path yang baru adalah sebagai berikut:
+```html
+path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
+```
+
+### 5. Melakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan
+Untuk me-refresh data produk secara asynchronous, dilakukan dengan membuat fungsi baru dalam bentuk kode script sebagai berikut:
+```html
+<script>
+    ...
+    async function refreshProducts() {
+        document.getElementById("product_table").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = `<tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Date Added</th>
+        </tr>`
+        products.forEach((item) => {
+            htmlString += `\n<tr>
+            <td>${item.fields.name}</td>
+            <td>${item.fields.price}</td>
+            <td>${item.fields.description}</td>
+            <td>${item.fields.date_added}</td>
+        </tr>` 
+        })
+        
+        document.getElementById("product_table").innerHTML = htmlString
+    }
+
+    refreshProducts()
+    ...
+</script>
+```
+pada fungsi tersebut, `document.getElementById("product_table")` akan memperoleh elemen berdasarkan ID nya. Dalam hal ini, elemen yang dituju adalah tag <table> dengan ID `product_table` yang telah dibuat sebelumnya. Kemudian, `innerHTML = ""` akan mengosongkan isi child element dari elemen yang dituju. Lalu, setiap data diambil dari for each loop setiap productnya dengan `products.forEach((item))` menggunakan fungsi `getProducts()`. Kemudian, htmlString kita konkatenasi dengan data produk untuk mengisi tabel. Terakhir, `refreshProducts()` memungkinkan fungsi ini akan dipanggil setiap kali user membuka halaman web.
+
+### 6. Melakukan perintah `collectstatic`
+Untuk melakukan perintah `collectstatic`, pertama-tama dilakukan `push` terlebih dahulu ke server penyebaran. Setelah itu, kita hanya perlu menjalankan perintah `python manage.py collectstatic`.
+
+### 7. Add, Push, dan Commit ke GitHub
+Sebagai tahap terakhir, push ke dalam repository GitHub menggunakan perintah berikut pada terminal:
+```bash
+git add .
+git commit -m "<pesan_commit>"
+git push -u origin main
+``` 
