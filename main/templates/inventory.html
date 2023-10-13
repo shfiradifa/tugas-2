@@ -4,7 +4,11 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
     <body style="flex-direction: column; height: 100%; ">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <nav class="navbar fixed-top bg-body-tertiary" style="background-color: #36a8ce;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
@@ -76,6 +80,12 @@
                                 Add a New Product
                             </button>
                         </a> -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-top: 13px; margin-bottom: 0px ; font-family: Arial; width: 1133px; border-radius: 12px; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-dotted" viewBox="0 0 16 16">
+                                <path d="M2.5 0c-.166 0-.33.016-.487.048l.194.98A1.51 1.51 0 0 1 2.5 1h.458V0H2.5zm2.292 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zm1.833 0h-.916v1h.916V0zm1.834 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zM13.5 0h-.458v1h.458c.1 0 .199.01.293.029l.194-.981A2.51 2.51 0 0 0 13.5 0zm2.079 1.11a2.511 2.511 0 0 0-.69-.689l-.556.831c.164.11.305.251.415.415l.83-.556zM1.11.421a2.511 2.511 0 0 0-.689.69l.831.556c.11-.164.251-.305.415-.415L1.11.422zM16 2.5c0-.166-.016-.33-.048-.487l-.98.194c.018.094.028.192.028.293v.458h1V2.5zM.048 2.013A2.51 2.51 0 0 0 0 2.5v.458h1V2.5c0-.1.01-.199.029-.293l-.981-.194zM0 3.875v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 5.708v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 7.542v.916h1v-.916H0zm15 .916h1v-.916h-1v.916zM0 9.375v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .916v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .917v.458c0 .166.016.33.048.487l.98-.194A1.51 1.51 0 0 1 1 13.5v-.458H0zm16 .458v-.458h-1v.458c0 .1-.01.199-.029.293l.981.194c.032-.158.048-.32.048-.487zM.421 14.89c.183.272.417.506.69.689l.556-.831a1.51 1.51 0 0 1-.415-.415l-.83.556zm14.469.689c.272-.183.506-.417.689-.69l-.831-.556c-.11.164-.251.305-.415.415l.556.83zm-12.877.373c.158.032.32.048.487.048h.458v-1H2.5c-.1 0-.199-.01-.293-.029l-.194.981zM13.5 16c.166 0 .33-.016.487-.048l-.194-.98A1.51 1.51 0 0 1 13.5 15h-.458v1h.458zm-9.625 0h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zm1.834-1v1h.916v-1h-.916zm1.833 1h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            </svg>
+                            Add Product by AJAX
+                        </button>
                         <!-- AJAX AAHHHHH -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -112,51 +122,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-top: 13px; margin-bottom: 0px ; font-family: Arial; width: 1133px; border-radius: 12px; background: linear-gradient(180deg, #8155FF 0%, #5200FF 100%);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-dotted" viewBox="0 0 16 16">
-                                <path d="M2.5 0c-.166 0-.33.016-.487.048l.194.98A1.51 1.51 0 0 1 2.5 1h.458V0H2.5zm2.292 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zm1.833 0h-.916v1h.916V0zm1.834 0h-.917v1h.917V0zm1.833 0h-.917v1h.917V0zM13.5 0h-.458v1h.458c.1 0 .199.01.293.029l.194-.981A2.51 2.51 0 0 0 13.5 0zm2.079 1.11a2.511 2.511 0 0 0-.69-.689l-.556.831c.164.11.305.251.415.415l.83-.556zM1.11.421a2.511 2.511 0 0 0-.689.69l.831.556c.11-.164.251-.305.415-.415L1.11.422zM16 2.5c0-.166-.016-.33-.048-.487l-.98.194c.018.094.028.192.028.293v.458h1V2.5zM.048 2.013A2.51 2.51 0 0 0 0 2.5v.458h1V2.5c0-.1.01-.199.029-.293l-.981-.194zM0 3.875v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 5.708v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zM0 7.542v.916h1v-.916H0zm15 .916h1v-.916h-1v.916zM0 9.375v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .916v.917h1v-.917H0zm16 .917v-.917h-1v.917h1zm-16 .917v.458c0 .166.016.33.048.487l.98-.194A1.51 1.51 0 0 1 1 13.5v-.458H0zm16 .458v-.458h-1v.458c0 .1-.01.199-.029.293l.981.194c.032-.158.048-.32.048-.487zM.421 14.89c.183.272.417.506.69.689l.556-.831a1.51 1.51 0 0 1-.415-.415l-.83.556zm14.469.689c.272-.183.506-.417.689-.69l-.831-.556c-.11.164-.251.305-.415.415l.556.83zm-12.877.373c.158.032.32.048.487.048h.458v-1H2.5c-.1 0-.199-.01-.293-.029l-.194.981zM13.5 16c.166 0 .33-.016.487-.048l-.194-.98A1.51 1.51 0 0 1 13.5 15h-.458v1h.458zm-9.625 0h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zm1.834-1v1h.916v-1h-.916zm1.833 1h.917v-1h-.917v1zm1.833 0h.917v-1h-.917v1zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                            </svg>
-                            Add Product by AJAX
-                        </button>
-                        <script>
-                            async function getProducts() {
-                                return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
-                            }
-                            async function refreshProducts() {
-                                document.getElementById("product_table").innerHTML = ""
-                                const products = await getProducts()
-                                let htmlString = `<tr>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Description</th>
-                                    <th>Stock</th>
-                                    <th>Date Added</th>
-                                </tr>`
-                                products.forEach((item) => {
-                                    htmlString += `\n<tr>
-                                    <td>${item.fields.name}</td>
-                                    <td>${item.fields.price}</td>
-                                    <td>${item.fields.description}</td>
-                                    <td>${item.fields.amount}</td>
-                                    <td>${item.fields.date_added}</td>
-                                </tr>` 
-                                })
-                                
-                                document.getElementById("product_table").innerHTML = htmlString
-                            }
-                            refreshProducts()
-                            function addProduct() {
-                                fetch("{% url 'main:add_product_ajax' %}", {
-                                    method: "POST",
-                                    body: new FormData(document.querySelector('#form'))
-                                }).then(refreshProducts)
-                    
-                                document.getElementById("form").reset()
-                                return false
-                            }
-                            document.getElementById("button_add").onclick = addProduct
-                        </script>
-                        <!-- card 4 newest product -->
+
+                        <!-- list product -->
                         <div class="card-newest-products" style="width: 1133px; height: 100%;">
                             <p class="item-count" style="margin-top: 15px; text-align: center; font-family: R-Flex;">Kamu menyimpan {{ products|length }} produk pada aplikasi ini.</p>
                             <table id="product_table", style="width:100%">
@@ -178,7 +145,6 @@
                                         <td class="text-left">{{product.description}}</td>
                                         <td class="text-center" >
                                             <div style="display: flex; flex-direction: row; justify-content: center;">
-                                                <!-- substract button -->
                                                 <form method="POST" action="{% url 'main:subtract_amount' product.id %}">
                                                     {% csrf_token %}
                                                     <button type="submit" class="subtract-button" style="border-width: 0; margin-right: 10px;">-</button>
@@ -188,7 +154,6 @@
                                                     {{ product.amount }}
                                                 </span>
 
-                                                <!-- add button -->
                                                 <form method="POST" action="{% url 'main:add_amount' product.id %}">
                                                     {% csrf_token %}
                                                     <button type="submit" class="add-button" style="border-width: 0; margin-left: 10px;">+</button>
@@ -224,6 +189,7 @@
             </div>
         </body-dashboard>
 
+        <!-- footer -->
         <!-- <div class="card-footer" style="    border-radius: 24px 24px 0px 0px; border: 1px solid var(--primary-white-4, rgba(255, 255, 255, 0.10)); background: #FFF;">
             <div class="footer-layout">
                 <img href="/assets/logo.png" alt="" width="30" height="auto" style="display: flex; padding-right: 0px; align-items: center;">
@@ -241,4 +207,83 @@
         </div> -->
     </body>
 </html>
+
+<script>
+    async function getProducts() {
+      return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+  
+    async function refreshProducts() {
+        const products = await getProducts()
+        let htmlString = "";
+        products.forEach((item) => {
+            htmlString += `\n
+            <tr>
+                <td class="text-left">${item.fields.name}</td>
+                <td class="text-right">${item.fields.price}</td>
+                <td class="text-left">${item.fields.description}</td>
+                <td class="text-center">
+                    <div style="display: flex; flex-direction: row; justify-content: center;">
+                        <!-- substract button -->
+                        <button onclick="substractAmount(${item.pk})" class="subtract-button" style="border-width: 0; margin-right: 10px;">-</button>
+                        <!-- amount -->
+                        <span id="amount${item.pk}">${item.amount}</span>
+                        <!-- add button -->
+                        <button onclick="addAmount(${item.pk})" class="add-button" style="border-width: 0; margin-left: 10px;">+</button>
+                    </div>
+                </td>
+                <td class="text-center">${item.fields.date_added}</td>
+                <td class="text-center" >
+                    <div style="display: flex; flex-direction: row; justify-content: center;">
+                        <!-- edit button -->
+                        <a href="${item.edit_url}" class="btn btn-primary btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </a>
+                        <!-- delete button -->
+                        <button onclick="deleteProduct(${item.pk})" class="btn btn-danger btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+            </tr>` 
+        });
+            
+        document.getElementById("product_table").innerHTML = htmlString
+    }
+  
+    async function addAmount(id) {
+        const response = await fetch(`/add-amount/${id}`);
+        refreshProducts();
+    }
+  
+    async function substractAmount(id) {
+        const response = await fetch(`/substract-amount/${id}`);
+        refreshProducts();
+    }
+  
+    async function deleteProduct(id) {
+      const response = await fetch(`/delete-product/${id}`);
+        refreshProducts();
+    }
+  
+    refreshProducts();
+  
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+  
+        document.getElementById("form").reset()
+        return false
+      }
+  
+      document.getElementById("button_add").onclick = addProduct
+  
+  </script>
 {% endblock content %}

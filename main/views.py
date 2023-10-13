@@ -1,5 +1,5 @@
 import datetime
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, JsonResponse
 from django.core import serializers
 
 from django.shortcuts import render
@@ -108,16 +108,17 @@ def logout_user(request):
     return response
 
 def add_amount(request, id):
-    data = get_object_or_404(Product, pk=id)
-    data.amount += 1
-    data.save()
+    product = get_object_or_404(Product, pk=id)
+    if product.amount >= 0:
+        product.amount += 1
+        product.save()
     return HttpResponseRedirect(reverse('main:inventory'))
 
 def subtract_amount(request, id):
-    data = get_object_or_404(Product, pk=id)
-    if data.amount > 1:
-        data.amount -= 1
-        data.save()
+    product = get_object_or_404(Product, pk=id)
+    if product.amount > 0:
+        product.amount -= 1
+        product.save()
     return HttpResponseRedirect(reverse('main:inventory'))
 
 def edit_product(request, id):
@@ -147,8 +148,20 @@ def home(request):
     return render(request, "home.html")
 
 def get_product_json(request):
-    product_item = Product.objects.all()
-    return HttpResponse(serializers.serialize('json', product_item))
+    products = Product.objects.filter(user=request.user)
+    product_list = []
+    for product in products:
+        product_dict = {
+            'pk': product.pk,
+            'name': product.name,
+            'description': product.description,
+            'price': product.price,
+            'amount': product.amount,
+            'edit_url': reverse('main:edit_product', args=[product.pk]),
+            'delete_url': reverse('main:delete_product', args=[product.pk]),
+        }
+        product_list.append(product_dict)
+    return JsonResponse(product_list, safe=False)
 
 @csrf_exempt
 def add_product_ajax(request):
